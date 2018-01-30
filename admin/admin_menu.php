@@ -15,7 +15,7 @@
 		            
 		        </li>
 		        <li class="dropdown">
-		            <a href="#" >แพ็กเกจ<b ></b></a>
+		            <a href="http://job2ezy.com/status.php" >แพ็กเกจ<b ></b></a>
 		            
 		        </li>
 		        <li><a href="">ข้อความวิ่ง</a></li>
