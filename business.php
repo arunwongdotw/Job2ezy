@@ -129,7 +129,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			       <div class="row">
     <div class="col-md-12 col-sm-6 col-lg-8 col-md-offset-2">
 		<div class="jb-accordion-wrapper">
-			<div class="jb-accordion-title">ข้อมูลบริษัท
+			<div class="jb-accordion-title">ข้อมูลบริษัท สสส
 
 			</div>
 			<div class="panel-body">
