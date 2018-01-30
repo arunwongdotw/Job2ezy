@@ -38,7 +38,11 @@ session_start();
 	$fax = $_POST['fax'];
 	$website = $_POST['website'];
 	$security = $_POST['security'];
+	
+	if($_FILES["filUpload"]["name"] != "")
+	{
 	move_uploaded_file($_FILES["filUpload"]["tmp_name"],"myfile/".$_FILES["filUpload"]["name"]);
+	}
 	$sql2 = "update business set
 			type_b_id='$type',
 			admin='$admin',
@@ -55,18 +59,18 @@ session_start();
 			security ='$security',
 			logo = '".$_FILES["filUpload"]["name"]."' ,
 			phone ='$phone' where b_username = '$b_username'";
-	$query2 = mysql_query($sql2);	
+	$query2 = mysql_query($sql2);
+	
+	
 	if($query2)
 		{
 			?>
 			<script>
 			alert("บันทึกข้อมูลบริษัทเรียบร้อย");
             window.location="business.php";
-            </script>
-			
+            </script>			
 			<?
-		}
-		
+		}		
 	}
 
 	$strSQL = "SELECT * FROM files where FilesID='2'";
@@ -102,22 +106,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </head>
 <body>
 <? include "topmenu.php";?>
-<!--div class="banner_1">
-	<div class="container">
-		<div id="search_wrapper1">
-		   <div id="search_form" class="clearfix">
-		    
+<div class="banner_1">
+    <div class="container">
+        <div id="search_wrapper1">
+          <div id="search_form" class="clearfix">
+          	<strong><font  face="AngsanaUPC"><p style="font-size: 5em">สร้าง/แก้ไขข้อมูลบริษัท</p></font></strong>
            </div>
-		</div>
+        </div>
    </div> 
-</div-->	
+</div>	
 <div class="container">
     <div class="single">  
 	 <div class="col-md-12 single_right">
 	      <div class="search_wrapper1">
 	       <div class="clearfix">
 	       	
-			<h1>สร้าง/แก้ไขข้อมูลบริษัท</h1>
+			
 
 		<div id="myTabContent" class="tab-content">
 		  <div role="tabpanel" class="tab-pane fade in active" id="home" aria-labelledby="home-tab" >
@@ -131,7 +135,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="panel-body">
 				<form action="business.php?action=update" method="POST" enctype="multipart/form-data">				
 					<div class="form-group">
-                    
+                    	
                         โลโก้บริษัท : 
                           <img src="myfile/<? echo $result_list['logo'];?>" width="200"><span><input type="file" name="filUpload"></span>
                         <hr>
@@ -147,7 +151,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     	<label for="nationality">ชื่อบริษัท *</label>
 						<input type="text" name="name" id="name" class="form-control" placeholder="ชื่อบริษัท" value="<? echo $result_list['name'];?>">
                     	<label for="status">รายละเอียดของบริษัท *</label>
-						<textarea name="detail" id="detail" cols="45" rows="3" class="form-control" placeholder="รายละเอียดของบริษัท" style="resize: vertical;"><? echo $result_list['detail'];?></textarea>
+						<textarea name="detail" id="detail" cols="45" rows="3" class="form-control" placeholder="รายละเอียดของบริษัท"><? echo $result_list['detail'];?></textarea>
                     	<label for="nationality">ที่อยู่ *</label>
 						<input type="text" name="address" id="address" class="form-control" placeholder="ที่อยู่" value="<? echo $result_list['address'];?>">
                     	<label for="status">จังหวัด *</label>

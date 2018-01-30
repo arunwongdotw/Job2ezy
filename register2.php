@@ -14,7 +14,7 @@ if($_REQUEST['action']=='insert'){
     $count1 = mysql_num_rows($query1);
     $result1 = mysql_fetch_array($query1);
     if($count1<1 and $password1==$password2){
-        echo $sql2="insert into business (b_username,b_password,date) values('$username','$password1','$date')";
+        echo $sql2="insert into business (b_username,b_password,username_ref,date) values('$username','$password1','0','$date')";
         $query2 = mysql_query($sql2);
         
         $sql3 = "SELECT * FROM business where b_username = '$username' and b_password = '$password1'";

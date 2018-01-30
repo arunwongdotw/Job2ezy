@@ -1,0 +1,162 @@
+<? 
+include "../connect.php";
+include "../fchangdate.php";
+date_default_timezone_set("Asia/Bangkok");
+
+$news_id = $_REQUEST["news_id"];
+
+if($_REQUEST['action']=='insert'){
+echo $_FILES["filUpload"]["name"];
+	$h1 = $_POST['news_Name'];
+	$h2 = $_POST['txtDescription1'];
+	$h3 = $_POST['content_news'];
+	move_uploaded_file($_FILES["filUpload"]["tmp_name"],"myfile/".$_FILES["filUpload"]["name"]);
+	$datetime = date("Y-m-d");
+	$sql1 = "insert into tb_news values('','$h1','$h2','$h3','".$_FILES["filUpload"]["name"]."','$datetime')";
+	//$query = mysql_query($sql);
+	//echo "บันทึกสำเร็จ";
+	$sql2 = "update tb_news set	h1='$h1',h2='$h2',h3='$h3',pic ='".$_FILES["filUpload"]["name"]."',date ='$datetime' where news_id = '".$_GET["news_id"]."'";
+	$sql3 = "update tb_news set	h1='$h1',h2='$h2',h3='$h3',date ='$datetime' where news_id = '".$_GET["news_id"]."'";
+
+	if($_GET["news_id"]==''){
+ 		$query = mysql_query($sql1);
+	}else if($_GET["news_id"]!='' and $_FILES["filUpload"]["name"]!=''){
+		$query = mysql_query($sql2);
+	}else{
+		$query = mysql_query($sql3);
+	}
+		if($query)
+		{
+			?>
+			<script>
+			alert("บันทึกข้อมูลเรียบร้อย");
+            window.location="News_manag.php?news_id=<? echo $_GET["news_id"];?>";
+            </script>
+			
+			<?
+		}
+}
+		
+	
+ 
+?>
+
+<html>
+<head>
+	<title>Admin : เพิ่มข่าว</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Seeking Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<link href="css/bootstrap-3.1.1.min.css" rel='stylesheet' type='text/css' />
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<!-- Custom Theme files -->
+<link href="css/style.css" rel='stylesheet' type='text/css' />
+<link href='//fonts.googleapis.com/css?family=Roboto:100,200,300,400,500,600,700,800,900' rel='stylesheet' type='text/css'>
+	<meta charset="utf-8">
+</head>
+<body>
+	<? include "../admin/admin_menu.php";?>	
+	<script src="ckeditor.js"></script>
+
+
+		<!-- Sample 1 -->
+		<?
+		$strSQL1 = "SELECT * FROM tb_news WHERE news_id = '".$_GET["news_id"]."' ";
+		$objQuery1 = mysql_query($strSQL1) or die ("Error Query [".$strSQL1."]");
+		$objResult1 = mysql_fetch_array($objQuery1);
+	
+	?>
+
+<div class="container">
+    <div class="single">  
+	   <div class="form-container">
+        <h2><a href="News_manag.php">เพิ่มข่าว</a>  <a href="view_News.php"> | ดูข่าวทั้งหมด</a></h2>
+		<form action="News_manag.php?action=insert&news_id=<?echo $news_id; ?>" method="post" enctype="multipart/form-data">
+				<div class="row">
+			 <div class="form-group col-md-12">
+                <p style="font-size: 18px;color: red">รูปหลักของข่าว</p>
+                <div class="col-md-12">
+                    <img src="myfile/<? echo $objResult1["pic"];?>" width="200"><span><input type="file" name="filUpload"></span>
+                        <hr>
+                </div>
+            </div>
+         </div>
+
+
+			<div class="row">
+			 <div class="form-group col-md-12">
+                <p style="font-size: 18px;color: red">หัวข้อข่าว</p>
+                <div class="col-md-12">
+                    <input type="text" name="news_Name" id="firstName" class="form-control input-sm" value="<?php echo $objResult1["h1"];?>"/>
+                    	
+                </div>
+            </div>
+         </div>
+         <div class="row">
+			 <div class="form-group col-md-12">
+                <p style="font-size: 18px;color: red">ข่าวย่อไม่เกิน110 ตัวอักษร</p>
+                <div class="col-md-12">
+                    <input type="text" name="content_news" id="firstName" class="form-control input-sm" value="<?php echo $objResult1["h3"];?>"/>
+                    	
+                </div>
+            </div>
+         </div>
+         <div class="row">
+			 <div class="form-group col-md-12">
+                <p style="font-size: 18px;color: red">วันที่</p>
+                <div class="col-md-12">
+                   
+ <input type="date" name="day" class="form-control input-sm" value="<?php echo $objResult1["date"];?>">
+
+                </div>
+            </div>
+         </div>
+			<div class="row">
+            <div class="form-group col-md-12">
+                <p style="font-size: 18px;color: red">เนื้อหาข้อข่าวทั้งหมด</p>
+                <div class="col-md-12">
+                    
+                    <textarea cols="80" id="txtDescription1" name="txtDescription1" rows="10" class="form-control input-sm"><?php echo $objResult1["h2"];?>
+					</textarea>
+                </div>
+            </div>
+         </div>
+ <div class="row">
+            <div class="form-actions floatRight">
+                <input type="submit" value="บันทึกข่าว" class="btn btn-primary btn-sm">  
+                <input name="submit2" type="reset" id="submit2" class="btn btn-primary btn-sm" value="ยกเลิก"/>
+            </div>
+        </div>
+        
+		
+		</form></div></div></div>
+		<script>
+
+			CKEDITOR.replace( 'txtDescription1');
+
+		</script>
+		<br>
+
+		<!-- Sample 2 --
+		<textarea cols="80" id="txtDescription2" name="txtDescription2" rows="10">
+				ThaiCreate.Com
+		</textarea>
+		<script>
+
+			CKEDITOR.replace( 'txtDescription2', {
+				toolbar: [
+					{ name: 'document', items: [ 'Source', '-', 'NewPage', 'Preview', '-', 'Templates' ] },	// Defines toolbar group with name (used to create voice label) and items in 3 subgroups.
+					[ 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', 'Image' ],			// Defines toolbar group without name.
+					'/',																					// Line break - next group will be placed in new line.
+					{ name: 'basicstyles', items: [ 'Bold', 'Italic' ] }
+				]
+			});
+
+		</script>-->
+
+</body>
+</html>

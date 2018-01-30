@@ -4,6 +4,12 @@ session_start();
 	
 	include "connect.php";
 
+	$sql1 = "select * from tb_news order by news_id desc";
+ 	$query1 = mysql_query($sql1);
+	
+	$sql2 = "select * from tb_jobgo order by jobgo_id desc";
+ 	$query2 = mysql_query($sql2);
+
 	$sql_pro = "select * from province order by PROVINCE_NAME";
 	$query_pro = mysql_query($sql_pro);
 		
@@ -15,6 +21,14 @@ session_start();
 	$sql_typeb = "select * from  type_business limit 10";
  	$query_typeb = mysql_query($sql_typeb);
 	
+	$i=0;
+	while($i<=26){
+		$i++;
+	$sql_banner[$i] = "select * from  files where FilesID='$i'";
+ 	$query_banner[$i] = mysql_query($sql_banner[$i]);
+	$result_banner[$i] = mysql_fetch_array($query_banner[$i]);
+	$result_banner[$i]['FilesName'];
+	}
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -258,21 +272,21 @@ session_start();
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
       <div class="item active">
-        <img src="images/b2.jpg" alt="New York" width="1200" height="700">
+        <img src="myfile/banner/<? echo $result_banner[1]['FilesName'];?>" alt="New York" width="1200" height="700">
         <div class="carousel-caption">
           
         </div>      
       </div>
 
       <div class="item">
-        <img src="images/b2.jpg" alt="Chicago" width="1200" height="700">
+        <img src="myfile/banner/<? echo $result_banner[2]['FilesName'];?>" alt="Chicago" width="1200" height="700">
         <div class="carousel-caption">
           
         </div>      
       </div>
     
       <div class="item">
-        <img src="images/b2.jpg" alt="Los Angeles" width="1200" height="700">
+        <img src="myfile/banner/<? echo $result_banner[3]['FilesName'];?>" alt="Los Angeles" width="1200" height="700">
         <div class="carousel-caption">
           
       </div>
@@ -288,83 +302,73 @@ session_start();
     <div class="single">  
 	   <div class="col-md-9 single_right">
 	      <div class="but_list">
-	       <div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
+	         <div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
 			<ul id="myTab" class="nav nav-tabs" role="tablist">
 			  <li role="presentation" class="active"><a href="#home" id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">ข่าว</a></li>
 			  <li role="presentation"><a href="#profile" role="tab" id="profile-tab" data-toggle="tab" aria-controls="profile">งานราชการ</a></li>
 		   </ul>
 		<div id="myTabContent" class="tab-content">
 		  <div role="tabpanel" class="tab-pane fade in active" id="home" aria-labelledby="home-tab">
+            <?$i=0;?>
+          	<? while($result1 = mysql_fetch_array($query1)){   $i=$i+1; ?>
+
 		    <div class="tab_grid">
 			    <div class="jobs-item with-thumb">
-				    <div class="thumb"><a href="jobs_single.html"><img src="images/a2.jpg" class="img-responsive" alt=""/></a></div>
+				    <div class="thumb"><a href="news_detail.php?news_id=<?php echo $result1["news_id"];?>"><img src="new/myfile/<? echo $result1['pic'];?>" class="img-responsive" alt=""/></a></div>
 				    <div class="jobs_right">
-						<div class="date">30 <span>Jul</span></div>
-						<div class="date_desc"><h6 class="title"><a href="news_detail.php">หัวข้อหลัก</a></h6>
-						  <span class="meta">คำอธิบาย</span>
+						<div class="date"><?echo substr($result1['date'],8,10);?> <span><?echo substr($result1['date'],4,4);?></span></div>
+						<div class="date_desc"><h6 class="title"><a href="news_detail.php?news_id=<?php echo $result1["news_id"];?>"><? echo $result1['h1'];?></a></h6>
+						  <span class="meta"><? //echo substr($result1['h3'],0,500);?></span>
 						</div>
 						<div class="clearfix"> </div>
                         <ul class="top-btns">
-							<li><a href="#" class="fa fa-plus toggle"></a></li>
-							<li><a href="#" class="fa fa-star"></a></li>
-							<li><a href="#" class="fa fa-link"></a></li>
+							
 						</ul>
-						<p class="description">รายละเอียด. <a href="news_detail.php" class="read-more">Read More</a></p>
-                    </div>
-					<div class="clearfix"> </div><br>
-					<div class="jobs-item with-thumb">
-				    <div class="thumb"><a href="jobs_single.html"><img src="images/a2.jpg" class="img-responsive" alt=""/></a></div>
-				    <div class="jobs_right">
-						<div class="date">30 <span>Jul</span></div>
-						<div class="date_desc"><h6 class="title"><a href="news_detail2.php">หัวข้อหลัก</a></h6>
-						  <span class="meta">คำอธิบาย</span>
-						</div>
-						<div class="clearfix"> </div>
-                        <ul class="top-btns">
-							<li><a href="#" class="fa fa-plus toggle"></a></li>
-							<li><a href="#" class="fa fa-star"></a></li>
-							<li><a href="#" class="fa fa-link"></a></li>
-						</ul>
-						<p class="description">รายละเอียด. <a href="news_detail2.php" class="read-more">Read More</a></p>
+						<p class="description"><? echo substr($result1['h3'],0,500);?>... <a href="news_detail.php?news_id=<?php echo $result1["news_id"];?>" class="read-more">Read More</a></p>
+
+
+
                     </div>
 					<div class="clearfix"> </div>
 				</div>
-				</div>
-
 			 </div>
+           <? }?>  
+             
 		  </div>
           
           
 		  <div role="tabpanel" class="tab-pane fade" id="profile" aria-labelledby="profile-tab">
+          
+          <? while($result2 = mysql_fetch_array($query2)){?>
 		    <div class="tab_grid">
 			    <div class="jobs-item with-thumb">
-				    <div class="thumb"><a href="jobs_single.html"><img src="images/a3.jpg" class="img-responsive" alt=""/></a></div>
+				    <div class="thumb"><a href="news_detail2.php?jobgo_id=<?php echo $result2["jobgo_id"];?>"><img src="job_go/myfile/<? echo $result2['pic'];?>" class="img-responsive" alt=""/></a></div>
 				    <div class="jobs_right">
-						<div class="date">30 <span>Jul</span></div>
-						<div class="date_desc"><h6 class="title"><a href="jobs_single.html">หัวข้อหลัก</a></h6>
-						  <span class="meta">คำอธิบาย</span>
+						<div class="date"><?echo substr($result2['date'],8,10);?> <span><?echo substr($result2['date'],4,4);?></span></div>
+						<div class="date_desc"><strong><h6 class="title"><a href="news_detail2.php?jobgo_id=<?php echo $result2["jobgo_id"];?>"><? echo $result2['jobgo_h1'];?></a></h6></strong>
+
+						  <p class="description"><? echo  substr($result2['jobgo_h2'],0,500) ;?>...<a href="news_detail2.php?jobgo_id=<?php echo $result2["jobgo_id"];?>" class="read-more">Read More</a></p>
 						</div>
 						<div class="clearfix"> </div>
                         <ul class="top-btns">
-							<li><a href="#" class="fa fa-plus toggle"></a></li>
-							<li><a href="#" class="fa fa-star"></a></li>
-							<li><a href="#" class="fa fa-link"></a></li>
+							
 						</ul>
-						<p class="description">รายละเอียด. <a href="jobs_single.html" class="read-more">Read More</a></p>
+						<!--p class="description"><? //echo $result2['jobgo_h3'];?>.<a href="news_detail2.php" class="read-more">Read More</a></p-->
                     </div>
 					<div class="clearfix"> </div>
 				</div>
-			 </div>	
+			 </div>
+		<? }?>
+			
 		  </div>
-		  
 	  </div>
      </div>
     </div>
 
    </div><div class="col-md-3">
-    <img src="images/b1.jpg" class="img-responsive" alt=""/><br>
-    <img src="images/b1.jpg" class="img-responsive" alt=""/><br>
-	<img src="images/b1.jpg" class="img-responsive" alt=""/>
+    <img src="myfile/banner/<? echo $result_banner[4]['FilesName'];?>" class="img-responsive" alt=""/><br>
+    <img src="myfile/banner/<? echo $result_banner[5]['FilesName'];?>" class="img-responsive" alt=""/><br>
+	<img src="myfile/banner/<? echo $result_banner[6]['FilesName'];?>" class="img-responsive" alt=""/>
 </div>
 
  </div>
@@ -447,42 +451,42 @@ session_start();
 	   <div class="col-md-10">
 	   	
 	<div class="col-md-3">
-	<img src="images/b1.jpg" class="img-responsive" alt=""/>
+	<img src="myfile/banner/<? echo $result_banner[7]['FilesName'];?>" class="img-responsive" alt=""/>
 	</div>
 	<div class="col-md-3">
-	<img src="images/b1.jpg" class="img-responsive" alt=""/></div>
+	<img src="myfile/banner/<? echo $result_banner[8]['FilesName'];?>" class="img-responsive" alt=""/></div>
 	<div class="col-md-3">
-	<img src="images/b1.jpg" class="img-responsive" alt=""/>
+	<img src="myfile/banner/<? echo $result_banner[9]['FilesName'];?>" class="img-responsive" alt=""/>
 	</div><div class="col-md-3">
-	<img src="images/b1.jpg" class="img-responsive" alt=""/>
+	<img src="myfile/banner/<? echo $result_banner[10]['FilesName'];?>" class="img-responsive" alt=""/>
 	</div>
 
 	<div class="clearfix"> </div><br>
     
     
 	<div class="col-md-3">
-	<img src="images/b1.jpg" class="img-responsive" alt=""/>
+	<img src="myfile/banner/<? echo $result_banner[11]['FilesName'];?>" class="img-responsive" alt=""/>
 	</div>
 	<div class="col-md-3">
-	<img src="images/b1.jpg" class="img-responsive" alt=""/></div>
+	<img src="myfile/banner/<? echo $result_banner[12]['FilesName'];?>" class="img-responsive" alt=""/></div>
 	<div class="col-md-3">
-	<img src="images/b1.jpg" class="img-responsive" alt=""/>
+	<img src="myfile/banner/<? echo $result_banner[13]['FilesName'];?>" class="img-responsive" alt=""/>
 	</div><div class="col-md-3">
-	<img src="images/b1.jpg" class="img-responsive" alt=""/>
+	<img src="myfile/banner/<? echo $result_banner[14]['FilesName'];?>" class="img-responsive" alt=""/>
 	</div>
 
 	<div class="clearfix"> </div>
     <br>
     
 	<div class="col-md-3">
-	<img src="images/b1.jpg" class="img-responsive" alt=""/>
+	<img src="myfile/banner/<? echo $result_banner[15]['FilesName'];?>" class="img-responsive" alt=""/>
 	</div>
 	<div class="col-md-3">
-	<img src="images/b1.jpg" class="img-responsive" alt=""/></div>
+	<img src="myfile/banner/<? echo $result_banner[16]['FilesName'];?>" class="img-responsive" alt=""/></div>
 	<div class="col-md-3">
-	<img src="images/b1.jpg" class="img-responsive" alt=""/>
+	<img src="myfile/banner/<? echo $result_banner[17]['FilesName'];?>" class="img-responsive" alt=""/>
 	</div><div class="col-md-3">
-	<img src="images/b1.jpg" class="img-responsive" alt=""/>
+	<img src="myfile/banner/<? echo $result_banner[18]['FilesName'];?>" class="img-responsive" alt=""/>
 	</div>
 
 	<div class="clearfix"> </div>

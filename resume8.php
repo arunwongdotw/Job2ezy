@@ -111,7 +111,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<form name="myform" action="resume8.php?action=update" method="post">
 					<input name="info7_id" type="hidden" value="<? echo $info7_id;?>">					
 						<p>โครงการ/ผลงาน</p>
-						<textarea name="project" class="form-control" type="text" style="resize: vertical;"><? echo $result4['project'];?></textarea>
+						<textarea name="project" class="form-control" type="text"><? echo $result4['project'];?></textarea>
                         <p>บุคคลอ้างอิง</p>
 						<input name="senior" class="form-control" type="text" value="<? echo $result4['senior'];?>">			    		
 					<div class="clearfix"> </div><br>
@@ -124,7 +124,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <? if($count<3 and $_REQUEST['action']!='edit'){?>
 				<form name="myform" action="resume8.php?action=insert" method="post">					
 					<label for="dob">โครงการ/ผลงาน</label>
-						<textarea name="project" class="form-control" type="text" placeholder="ชื่อโครงการ/ผลงาน" style="resize: vertical;"></textarea>
+						<textarea name="project" class="form-control" type="text" placeholder="ชื่อโครงการ/ผลงาน"></textarea>
 			    		<p>บุคคลอ้างอิง</p>
 			    		<input name="senior" class="form-control" type="text">		    		
 					<br>

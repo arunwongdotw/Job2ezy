@@ -2,6 +2,10 @@
 session_save_path("./session/");
 session_start();
 include "connect.php";
+	$news_id = $_REQUEST['news_id'];
+	$sql_list3 = "select * from tb_news where news_id = '$news_id'";
+ 	$query_list3 = mysql_query($sql_list3);
+	$result_list3= mysql_fetch_array($query_list3);
 
 	$sql1 = "select * from tb_news order by news_id desc";
  	$query1 = mysql_query($sql1);
@@ -9,6 +13,7 @@ include "connect.php";
 	$sql2 = "select * from tb_jobgo order by jobgo_id desc";
  	$query2 = mysql_query($sql2);
 ?>
+
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -43,37 +48,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class="container">
     <div class="single">  
 	   <div class="col-md-12 single_right">
-	       <center><p><img src="images/f11.jpg" class="img-responsive" alt=""/></p></center>
+	       <center><p><img src="new/myfile/<? echo $result_list3['pic'];?>" class="img-responsive" alt="" width="30%" /></p></center>
 	       <dl class="experience">
 	       	 <div class="experience_content experience_content1">
-	       	   <!--div class="experience_period"> 
-	       		 <small>From:</small><br><span>2005</span><br><small>To:</small><br><span>2010</span>
-	       	   </div-->
-	       	   <div class="experience_1"><dt><h6>5 อันดับอาชีพมาแรงปี 2018</h6></dt>
+	       	   
+	       	   <div class="experience_1"><dt><h6><? echo $result_list3['h1']; ?></h6></dt><hr>
 	       		 <dd>
-	       		 	<p>อันดับ 8 สายงานการบริการสำนักงาน (Office Service)
-ใครที่จะทำตำแหน่งงานนี้ได้ต้องมีความใจเย็น มีการสื่อสารที่ดีกับบุคคลอื่น เพราะขึ้นชื่อว่าเป็นสายานบริการอล้วด้วยนั้น เราต้องคอยดูแล อำนวยความสะดวกต่างๆ ในที่สำนักงานได้เป็นอย่างดี ถึงแม้ว่าครั้งจะเรื่องที่ไม่พอใจบ้าง แต่ก็ต้องอดทนเอาไว้ สำหรับสายงานการบริการสำนักงาน ตำแหน่งที่มีรายได้ดีที่สุด คือ ผู้จัดการฝ่ายบริหาร (Administration Manager) มีรายได้ถึง 152,000 บาท/เดือน และตำแหน่งระดับปฏิบัติการ มีรายได้เฉลี่ยอยู่ที่ 9,000 – 45,000 บาท/เดือน
-
-อันดับ 7 สายงานอาคารและการก่อสร้าง (Building & Construction)
-ถึงจะเวลาผ่านไปแค่ไหนแต่สำหรับสายงานอาคารและการก่อสร้าง ก็ยังเป็นสิ่งที่ต้องการของนายจ้างหรือบริษัทต่างๆ อยู่เหมือนเดิม ถึงแม้ว่าจะไม่ได้อยู่ในอันดับต้นๆ ก็ตาม สำหรับตำแหน่งงานนี้ รายได้ของผู้จัดการฝ่ายการก่อสร้าง (Construction Manager) มีรายได้ถึง 250,000 บาท/เดือน และตำแหน่งระดับปฏิบัติการ มีรายได้เฉลี่ยอยู่ที่ 15,000 – 90,000 บาท/เดือน เลยทีเดียว
-
-อันดับ 6 สายงานทรัพยากรมนุษย์ (Human Resources)
-สายงานด้านทรัพยากรมนุษย์ ก็เป็นอีกหนึ่งสายงานที่เป็นต้องการของบริษัทต่างๆ สำหรับตำแหน่งในสายงานนี้ ได้แก่ ผู้อำนวยการฝ่ายทรัพยากรบุคคล (Head of HR/ HR Director) มีรายได้ถึง 325,000 บาท/เดือน และตำแหน่งระดับปฏิบัติการ มีรายได้เฉลี่ยอยู่ที่ 12,000 – 40,000 บาท/เดือน
-
-อันดับ 5 สายงานการผลิต (Manufacturing & Production)
-สายงานการผลิตก็เป็นอีกสายงาน ที่เป็นต้องการของนายจ้าง เพราะด้วยงานด้านนี้ต้องการบุคคลที่มีความสามารถเฉพาะตัว มีความเชี่ยวชาญในด้านต่างๆ สำหรับตำแหน่งงานที่มีรายได้สูงที่สุด คือ ผู้จัดการการดำเนินงานสายการผลิต (Factory/ Manufacturing/ Operations Manager) มีรายได้ถึง 340,000 บาท/เดือน และตำแหน่งระดับปฏิบัติการ มีรายได้เฉลี่ยอยู่ที่ 18,000 – 80,000 บาท/เดือน
-
-อันดับ 4 สายงาน Supply Chain
-เป็นตำแหน่งงานที่ต้องการคนที่มีความอดทน มีมนุษยสมัพันธ์ที่ดีเยี่ยม ติดต่อประสานกับบุคคลอื่นได้เป็นอย่างดี สำหรับตำแหน่งที่มีรายได้ดีที่สุด คือ ตำแหน่ง Supply Chain Manager มีรายได้ถึง 360,000 บาท/เดือน และตำแหน่งระดับปฏิบัติการ มีรายได้เฉลี่ยอยู่ที่ 15,000 – 63,000 บาท/เดือน
-
-อันดับ 3 สายงานเทคโนโลยีสารสนเทศ (Information Technology)
-ไม่ว่าจะหันไปทางไหน บริษัทต่างๆ ก็ต้องการเจ้าหน้าที่ทางด้านเทคโนโลยีกันเป็นจำนวนมากยิ่งขึ้น ทั้งในการดูระบบของบริษัท โปรแกรมเมอร์ เป็นต้น และยิ่งเดี๋ยวนี้บริษัทต่างๆ ก็ใช้เทคโนโลยีต่างๆ เข้ามาช่วยในการทำงานเพื่อช่วยให้สะดวกมากยิ่งขึ้นนั้น ก็ต้องการคนที่เรียนรู้ด้านนี้มากเพิ่มขึ้น และตำแหน่งที่มีรายได้ดีที่สุด คือ ผู้อำนวยการโครงการ (Project Director) มีรายได้ถึง 396,000 บาท/เดือน และตำแหน่งระดับปฏิบัติการ มีรายได้เฉลี่ยอยู่ที่ 15,000 – 60,000 บาท/เดือน
-
-อันดับ 2 สายงานการขาย และการตลาด (Sales & Marketing)
-น้องๆ คนไหนที่ชอบงานด้านนี้ บอกเลยว่าเรียนจบมาแล้วไม่ตกงานแน่นอน ถึงในปัจจุบันเราจะเห็นได้ว่ามีนักศึกษาเรียนจบมาในด้านนี้มากยิ่งขึ้น แต่ก็ยังเป็นสายงานที่ต้องการมากขึ้นอีกเช่นกัน ดังนั้นก็ส่งผลทำให้ค่าตอบแทนสูงขึ้นไปด้วย สำหรับตำแหน่งที่มีรายได้ดีที่สุด คือ หัวหน้าฝ่ายขายและการตลาด (Head of Sales & Marketing) มีรายได้ถึง 420,000 บาท/เดือน และตำแหน่งระดับปฏิบัติการ มีรายได้เฉลี่ยอยู่ที่ 15,000 – 60,000 บาท/เดือน
-
-อันดับ 1 สายงานการเงิน และการบัญชี (Accounting & Finance)
-สำหรับสายงานด้านการเงินและบัญชี ก็ยังสามารถครองแชมป์อยู่ในอันดับ 1 เหมือนเดิม ถือได้ว่าเป็นสาขาวิชาที่มีนักศึกษาเลือกเรียนต่อเยอะเป็นอันดับต้นๆ ของประเทศ แต่ก็เรียนจบยากพอสมควร ดังนั้นจึงทำให้สายงานนี้เป็นที่ต้องการมากที่สุด แถมยังได้ค่าตอบแทนที่ดีมากอีกด้วย ตำแหน่งที่มีรายได้ดีที่สุด คือ หัวหน้าฝ่ายการเงินและการธนาคาร (Head of Finance & Accounting) มีรายได้ถึง 463,000 บาท/เดือน และตำแหน่งระดับปฏิบัติการ มีรายได้เฉลี่ยอยู่ที่ 12,000 – 45,000 บาท/เดือน</p>
+	       		 	<? echo $result_list3['h2']; ?>
 	       		 </dd></div>
 	       	   </div>
 	       	   <div class="experience_content">
@@ -95,23 +76,25 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		   </ul>
 		<div id="myTabContent" class="tab-content">
 		  <div role="tabpanel" class="tab-pane fade in active" id="home" aria-labelledby="home-tab">
-          
-          <? while($result1 = mysql_fetch_array($query1)){?>
+            <?$i=0;?>
+          <? while($result1 = mysql_fetch_array($query1)){   $i=$i+1;?>
+
 		    <div class="tab_grid">
 			    <div class="jobs-item with-thumb">
-				    <div class="thumb"><a href="jobs_single.html"><img src="images/<? echo $result1['pic'];?>" class="img-responsive" alt=""/></a></div>
+				    <div class="thumb"><a href="news_detail.php?news_id=<?php echo $result1["news_id"];?>"><img src="new/myfile/<? echo $result1['pic'];?>" class="img-responsive" alt=""/></a></div>
 				    <div class="jobs_right">
-						<div class="date">30 <span>Jul</span></div>
-						<div class="date_desc"><h6 class="title"><a href="jobs_single.html"><? echo $result1['h1'];?></a></h6>
-						  <span class="meta"><? echo $result1['h2'];?></span>
+						<div class="date"><?echo substr($result1['date'],8,10);?> <span><?echo substr($result1['date'],4,4);?></span></div>
+						<div class="date_desc"><h6 class="title"><a href="news_detail.php?news_id=<?php echo $result1["news_id"];?>"><? echo $result1['h1'];?></a></h6>
+						  <span class="meta"><? //echo substr($result1['h3'],0,500);?></span>
 						</div>
 						<div class="clearfix"> </div>
                         <ul class="top-btns">
-							<li><a href="#" class="fa fa-plus toggle"></a></li>
-							<li><a href="#" class="fa fa-star"></a></li>
-							<li><a href="#" class="fa fa-link"></a></li>
+							
 						</ul>
-						<p class="description"><? echo $result1['h3'];?>. <a href="jobs_single.html" class="read-more">Read More</a></p>
+						<p class="description"><? echo substr($result1['h3'],0,500);?>... <a href="news_detail.php?news_id=<?php echo $result1["news_id"];?>" class="read-more">Read More</a></p>
+
+
+
                     </div>
 					<div class="clearfix"> </div>
 				</div>
@@ -126,19 +109,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
           <? while($result2 = mysql_fetch_array($query2)){?>
 		    <div class="tab_grid">
 			    <div class="jobs-item with-thumb">
-				    <div class="thumb"><a href="jobs_single.html"><img src="images/<? echo $result2['pic'];?>" class="img-responsive" alt=""/></a></div>
+				    <div class="thumb"><a href="news_detail2.php?jobgo_id=<?php echo $result2["jobgo_id"];?>"><img src="job_go/myfile/<? echo $result2['pic'];?>" class="img-responsive" alt=""/></a></div>
 				    <div class="jobs_right">
-						<div class="date">30 <span>Jul</span></div>
-						<div class="date_desc"><h6 class="title"><a href="jobs_single.html"><? echo $result2['jobgo_h1'];?></a></h6>
-						  <span class="meta"><? echo $result2['jobgo_h2'];?></span>
+						<div class="date"><?echo substr($result2['date'],8,10);?> <span><?echo substr($result2['date'],4,4);?></span></div>
+						<div class="date_desc"><strong><h6 class="title"><a href="news_detail2.php?jobgo_id=<?php echo $result2["jobgo_id"];?>"><? echo $result2['jobgo_h1'];?></a></h6></strong>
+
+						  <p class="description"><? echo  substr($result2['jobgo_h2'],0,500) ;?>...<a href="news_detail2.php?jobgo_id=<?php echo $result2["jobgo_id"];?>" class="read-more">Read More</a></p>
 						</div>
 						<div class="clearfix"> </div>
                         <ul class="top-btns">
-							<li><a href="#" class="fa fa-plus toggle"></a></li>
-							<li><a href="#" class="fa fa-star"></a></li>
-							<li><a href="#" class="fa fa-link"></a></li>
+							
 						</ul>
-						<p class="description"><? echo $result2['jobgo_h3'];?>.<a href="jobs_single.html" class="read-more">Read More</a></p>
+						<!--p class="description"><? //echo $result2['jobgo_h3'];?>.<a href="news_detail2.php" class="read-more">Read More</a></p-->
                     </div>
 					<div class="clearfix"> </div>
 				</div>

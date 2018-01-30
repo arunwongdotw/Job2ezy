@@ -7,7 +7,7 @@ if($_REQUEST['action']=='insert'){
 	$username = $_POST['username'];
 	$password = $_POST['password'];
 	
-	echo $sql1 = "SELECT * FROM business where b_username = '$username' and b_password = '$password'";
+	$sql1 = "SELECT * FROM business where b_username = '$username' and b_password = '$password'";
 	$query1 = mysql_query($sql1);
 	$count1 = mysql_num_rows($query1);
 	$result1 = mysql_fetch_array($query1);

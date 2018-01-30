@@ -51,60 +51,61 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			  <li role="presentation" class="active"><a href="#home" id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">ข่าว</a></li>
 			  <li role="presentation"><a href="#profile" role="tab" id="profile-tab" data-toggle="tab" aria-controls="profile">งานราชการ</a></li>
 		   </ul>
-		<div id="myTabContent" class="tab-content">
-		  <div role="tabpanel" class="tab-pane fade in active" id="home" aria-labelledby="home-tab">
-          
-          <? while($result1 = mysql_fetch_array($query1)){?>
-		    <div class="tab_grid">
-			    <div class="jobs-item with-thumb">
-				    <div class="thumb"><a href="jobs_single.html"><img src="images/<? echo $result1['pic'];?>" class="img-responsive" alt=""/></a></div>
-				    <div class="jobs_right">
-						<div class="date">30 <span>Jul</span></div>
-						<div class="date_desc"><h6 class="title"><a href="news_detail.php"><? echo $result1['h1'];?></a></h6>
-						  <span class="meta"><? echo $result1['h2'];?></span>
-						</div>
-						<div class="clearfix"> </div>
+	<div id="myTabContent" class="tab-content">
+          <div role="tabpanel" class="tab-pane fade in active" id="home" aria-labelledby="home-tab">
+            <?$i=0;?>
+          <? while($result1 = mysql_fetch_array($query1)){   $i=$i+1;?>
+
+            <div class="tab_grid">
+                <div class="jobs-item with-thumb">
+                    <div class="thumb"><a href="news_detail.php?news_id=<?php echo $result1["news_id"];?>"><img src="new/myfile/<? echo $result1['pic'];?>" class="img-responsive" alt=""/></a></div>
+                    <div class="jobs_right">
+                        <div class="date"><?echo substr($result1['date'],8,10);?> <span><?echo substr($result1['date'],4,4);?></span></div>
+                        <div class="date_desc"><h6 class="title"><a href="news_detail.php?news_id=<?php echo $result1["news_id"];?>"><? echo $result1['h1'];?></a></h6>
+                          <span class="meta"><? //echo substr($result1['h3'],0,500);?></span>
+                        </div>
+                        <div class="clearfix"> </div>
                         <ul class="top-btns">
-							<li><a href="#" class="fa fa-plus toggle"></a></li>
-							<li><a href="#" class="fa fa-star"></a></li>
-							<li><a href="#" class="fa fa-link"></a></li>
-						</ul>
-						<p class="description"><? echo $result1['h3'];?>. <a href="news_detail.php" class="read-more">Read More</a></p>
+                            
+                        </ul>
+                        <p class="description"><? echo substr($result1['h3'],0,500);?>... <a href="news_detail.php?news_id=<?php echo $result1["news_id"];?>" class="read-more">Read More</a></p>
+
+
+
                     </div>
-					<div class="clearfix"> </div>
-				</div>
-			 </div>
+                    <div class="clearfix"> </div>
+                </div>
+             </div>
            <? }?>  
              
-		  </div>
+          </div>
           
           
-		  <div role="tabpanel" class="tab-pane fade" id="profile" aria-labelledby="profile-tab">
+          <div role="tabpanel" class="tab-pane fade" id="profile" aria-labelledby="profile-tab">
           
           <? while($result2 = mysql_fetch_array($query2)){?>
-		    <div class="tab_grid">
-			    <div class="jobs-item with-thumb">
-				    <div class="thumb"><a href="jobs_single.html"><img src="images/<? echo $result2['pic'];?>" class="img-responsive" alt=""/></a></div>
-				    <div class="jobs_right">
-						<div class="date">30 <span>Jul</span></div>
-						<div class="date_desc"><h6 class="title"><a href="news_detail2.php"><? echo $result2['jobgo_h1'];?></a></h6>
-						  <span class="meta"><? echo $result2['jobgo_h2'];?></span>
-						</div>
-						<div class="clearfix"> </div>
+            <div class="tab_grid">
+                <div class="jobs-item with-thumb">
+                    <div class="thumb"><a href="news_detail2.php?jobgo_id=<?php echo $result2["jobgo_id"];?>"><img src="job_go/myfile/<? echo $result2['pic'];?>" class="img-responsive" alt=""/></a></div>
+                    <div class="jobs_right">
+                        <div class="date"><?echo substr($result2['date'],8,10);?> <span><?echo substr($result2['date'],4,4);?></span></div>
+                        <div class="date_desc"><strong><h6 class="title"><a href="news_detail2.php?jobgo_id=<?php echo $result2["jobgo_id"];?>"><? echo $result2['jobgo_h1'];?></a></h6></strong>
+
+                          <p class="description"><? echo  substr($result2['jobgo_h2'],0,500) ;?>...<a href="news_detail2.php?jobgo_id=<?php echo $result2["jobgo_id"];?>" class="read-more">Read More</a></p>
+                        </div>
+                        <div class="clearfix"> </div>
                         <ul class="top-btns">
-							<li><a href="#" class="fa fa-plus toggle"></a></li>
-							<li><a href="#" class="fa fa-star"></a></li>
-							<li><a href="#" class="fa fa-link"></a></li>
-						</ul>
-						<p class="description"><? echo $result2['jobgo_h3'];?>.<a href="news_detail2.php" class="read-more">Read More</a></p>
+                            
+                        </ul>
+                        <!--p class="description"><? //echo $result2['jobgo_h3'];?>.<a href="news_detail2.php" class="read-more">Read More</a></p-->
                     </div>
-					<div class="clearfix"> </div>
-				</div>
-			 </div>
-		<? }?>
-			
-		  </div>
-	  </div>
+                    <div class="clearfix"> </div>
+                </div>
+             </div>
+        <? }?>
+            
+          </div>
+      </div>
      </div>
     </div>
     

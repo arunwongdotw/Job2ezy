@@ -1,8 +1,8 @@
 
 <?php
 $hostName = "localhost";
-$userName = "root"; 
-$password = "rootroot"; 
+$userName = "roj2009_montha"; 
+$password = "rwZh8WCn0L"; 
 $dbName = "roj2009_jobm0n"; 
 
 mysql_connect($hostName,$userName,$password)or die("No Connect Host Now");

@@ -40,22 +40,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </head>
 <body>
 <? include "topmenu.php";?>
-<!--div class="banner_1">
-	<div class="container">
-		<div id="search_wrapper1">
-		   <div id="search_form" class="clearfix">
-		    
+<div class="banner_1">
+    <div class="container">
+        <div id="search_wrapper1">
+          <div id="search_form" class="clearfix">
+          	<strong><font  face="AngsanaUPC"><p style="font-size: 5em">รายการประกาศงาน</p></font></strong>
            </div>
-		</div>
+        </div>
    </div> 
-</div-->	
+</div>	
 <div class="container">
     <div class="single">  
 	 <div class="col-md-12 single_right">
 	      <div class="search_wrapper1">
 	       <div class="clearfix">
-	       	
-			<h1>รายการประกาศงาน</h1>
+	     
 
 		<div id="myTabContent" class="tab-content">
 		  <div role="tabpanel" class="tab-pane fade in active" id="home" aria-labelledby="home-tab" >
