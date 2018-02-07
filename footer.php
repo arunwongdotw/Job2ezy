@@ -17,8 +17,8 @@
 			  <ul >
 
 			  	<li><i> </i><p><span class="yellow"><a href="contact.php"><i class="fa  fa-bullhorn"></i> ติดต่อเรา</a></span></p></li>
-			  		<li><i> </i><p><span class="yellow"><a> ท่านสามารถติดต่อ แนะนำ สอบถามบริการ </a></span></p></li>
-			  		<li><i> </i><p><span class="yellow"><a>โดยการกรอกแบบฟอร์ม </a></span></p></li>
+			  		<li><i> </i><p><span class="yellow"><a href="contact.php"> ท่านสามารถติดต่อ แนะนำ สอบถามบริการ </a></span></p></li>
+			  		<li><i> </i><p><span class="yellow"><a href="contact.php">โดยการกรอกแบบฟอร์ม </a></span></p></li>
 
 			  </ul>
 			</div>

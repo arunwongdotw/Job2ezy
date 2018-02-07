@@ -24,11 +24,21 @@ if($_REQUEST['action']=='insert') {
 	$seller = $_POST['seller'];	
 	$datetime = date("Y-m-d");	
 	
+	if($_FILES["filUpload"]["name"] != "")
+	{
+		if(move_uploaded_file($_FILES["filUpload"]["tmp_name"],"myfile/pic_member/".$_FILES["filUpload"]["name"]))
+		{		
+			//@unlink("myfile/banner/".$_POST["hdnOldFile"]);			
+			$strSQL = "UPDATE info1 set picture = '".$_FILES["filUpload"]["name"]."' WHERE username = '$username'";
+			$objQuery = mysql_query($strSQL);
+		}
+	}
+	
 	$sql1 = "insert into info1 (username,name,birthday,sex,h,w,nation,religion,status,seller,datetime) values('$username','$name','$birthday','$sex','$h','$w','$nation','$religion','$status1','$seller','$datetime')";
 	//$query1 = mysql_query($sql1);
 	
 	$sql2 = "update info1 set
-			name='$name',birthday='$birthday',sex='$sex',h ='$h',w ='$w',nation ='$nation',religion ='$religion',seller='$seller' where username = '$username'";
+			name='$name',birthday='$birthday',sex='$sex',h ='$h',w ='$w',nation ='$nation',religion ='$religion',status='$status1',seller='$seller' where username = '$username'";
 			
 	
  	
@@ -109,63 +119,78 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 			</div>
 			<div class="panel-body">
-				<form name="myform" action="resume1.php?action=insert" method="post">
+				<form name="myform" action="resume1.php?action=insert" method="post" enctype="multipart/form-data">
+                	<div class="form-group" align="center">
+                     <label for="gender" style="font-weight: bold;">รูปถ่าย : </label>
+                     <? if($result3['picture']==''){?>
+                     <img src="myfile/pic_member/picmember.png" width="200">
+                     <? }else{?>
+                     <img src="myfile/pic_member/<? echo $result3['picture'];?>" width="200">
+                     <? }?>
+                     <span><input type="file" name="filUpload"></span>
+                     
+                    </div>      
 					<div class="form-group">
-						<label for="myName">ชื่อ-นามสกุล *</label>
-						<input id="name" name="name" class="form-control" type="text" data-validation="required" value="<? echo $result3['name'];?>">
+						<label for="myName" style="font-weight: bold;">ชื่อ-นามสกุล <font color="red">*</font></label>
+						<input id="name" name="name" class="form-control" type="text" data-validation="required" value="<? echo $result3['name'];?>" required>
 						<span id="error_name" class="text-danger"></span>
 					</div>
 					<div class="form-group">
-						<label for="gender">เพศ *</label>
+						<label for="gender" style="font-weight: bold;">เพศ <font color="red">*</font></label>
 						<select name="sex" id="sex" class="form-control">
-							<option selected>หญิง</option>
-							<option>ชาย</option>
+							<option value="1" <? if($result3['sex']==1){ echo "selected";}?>>ชาย</option>
+							<option value="2" <? if($result3['sex']==2){ echo "selected";}?>>หญิง</option>
 						</select>
 						<span id="error_gender" class="text-danger"></span>
 					</div>
 					<div class="form-group">
-						<label for="status">สถานภาพ *</label>
+						<label for="status" style="font-weight: bold;">สถานภาพ <font color="red">*</font></label>
 						<select name="status1" id="status1" class="form-control">
-							<option selected>โสด</option>
-							<option>สมรส</option>
-							<option>หย่า</option>
-							<option>หม้าย</option>
+							<option value="1" <? if($result3['status']==1){ echo "selected";}?>>โสด</option>
+							<option value="2" <? if($result3['status']==2){ echo "selected";}?>>สมรส</option>
+							<option value="3" <? if($result3['status']==3){ echo "selected";}?>>หย่า</option>
+							<option value="4" <? if($result3['status']==4){ echo "selected";}?>>หม้าย</option>
 						</select>
 						<span id="error_status" class="text-danger"></span>
 					</div>
 					<div class="form-group">
-						<label for="nationality">สัญชาติ  *</label>
-						<input id="nation" name="nation" class="form-control" type="text" value="<? echo $result3['nation'];?>">
+						<label for="nationality" style="font-weight: bold;">สัญชาติ <font color="red">*</font></label>
+						<input id="nation" name="nation" class="form-control" type="text" value="<? echo $result3['nation'];?>" required>
 						<span id="error_nationality" class="text-danger"></span>
 					</div>
 					<div class="form-group">
-						<label for="cult">ศาสนา  *</label>
-						<input id="religion" name="religion" class="form-control" type="text" value="<? echo $result3['religion'];?>">
+						<label for="cult" style="font-weight: bold;">ศาสนา <font color="red">*</font></label>
+						<input id="religion" name="religion" class="form-control" type="text" value="<? echo $result3['religion'];?>" required>
 						<span id="error_cult" class="text-danger"></span>
 					</div>
 					<div class="form-group">
-						<label for="dob">วัน-เดือน-ปี เกิด  *</label>
-						<input type="date" name="birthday" id="dob" class="form-control" value="<? echo $result3['birthday'];?>">
+						<label for="dob" style="font-weight: bold;">วัน-เดือน-ปี เกิด <font color="red">*</font></label>
+						<input type="date" name="birthday" id="dob" class="form-control" value="<? echo $result3['birthday'];?>" required>
 						<span id="error_dob" class="text-danger"></span>
 					</div>
 					
 						<div class="row">
 			    				<div class="col-xs-6 col-sm-6 col-md-6">
 			    					<div class="form-group">
-			    						<label for="dob">ส่วนสูง  *</label>
-			                <input type="text" name="h" id="h" class="form-control input-sm" value="<? echo $result3['h'];?>">
+			    						<label for="dob" style="font-weight: bold;">ส่วนสูง <font color="red">*</font></label>
+			                <input type="text" name="h" id="h" class="form-control input-sm" value="<? echo $result3['h'];?>" required>
 			    					</div>
 			    				</div>
 			    				<div class="col-xs-6 col-sm-6 col-md-6">
 			    					<div class="form-group">
-			    						<label for="dob">น้ำหนัก *</label>
-			    						<input type="text" name="w" id="w" class="form-control input-sm"  value="<? echo $result3['w'];?>">
+			    						<label for="dob" style="font-weight: bold;">น้ำหนัก <font color="red">*</font></label>
+			    						<input type="text" name="w" id="w" class="form-control input-sm"  value="<? echo $result3['w'];?>" required>
 			    					</div>
 			    				</div>
 			    			</div>
 			    			<div class="form-group">
-						<label for="military">สถานภาพทางทหาร  *</label>
-						<input id="seller" name="seller" class="form-control" type="text" value="<? echo $result3['seller'];?>">
+						<label for="military" style="font-weight: bold;">สถานภาพทางทหาร <font color="red">*</font></label>
+						<select name="seller" id="seller" class="form-control">
+							<option value="1" <?if($result3['seller'] == 1){ echo "selected"; }?>>ผ่านการเกณฑ์ทหาร</option>
+							<option value="2" <?if($result3['seller'] == 2){ echo "selected"; }?>>ยังไม่ผ่านการเกณฑ์ทหาร</option>
+							<option value="3" <?if($result3['seller'] == 3){ echo "selected"; }?>>ได้รับการยกเว้น</option>
+						</select>
+						<!-- <input id="seller" name="seller" class="form-control" type="text" value="<? echo $result3['seller'];?>"> -->
 						<span id="error_military" class="text-danger"></span>
 					</div>
 					

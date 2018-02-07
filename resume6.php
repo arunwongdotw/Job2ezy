@@ -112,13 +112,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			?>
 				<form name="myform" action="resume6.php?action=update" method="post">
 					<input name="info5_id" type="hidden" value="<? echo $info5_id;?>">					
-						<p>เริ่มต้น</p>
+						<p style="font-weight: bold;">เริ่มต้น</p>
 						<input name="startdate" class="form-control" type="date" value="<? echo $result4['startdate'];?>">
-                        <p>สิ้นสุด</p>
+                        <p style="font-weight: bold;">สิ้นสุด</p>
 						<input name="enddate" class="form-control" type="date" value="<? echo $result4['enddate'];?>">
-			    		<p>สถาบัน</p>
+			    		<p style="font-weight: bold;">สถาบัน</p>
 			    		<input name="place" class="form-control" type="text" value="<? echo $result4['place'];?>">			    		
-			    		<p>หลักสูตร</p>
+			    		<p style="font-weight: bold;">หลักสูตร</p>
 			    		<input name="corse" class="form-control" type="text" value="<? echo $result4['corse'];?>">			    		
 					<div class="clearfix"> </div><br>
 					<button id="submit" type="submit" value="submit" class="btn btn-primary center">อัพเดทข้อมูล</button>
@@ -129,13 +129,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<!------------------------- insert ------------------------------>
             <? if($count<3 and $_REQUEST['action']!='edit'){?>
 			<form name="myform" action="resume6.php?action=insert" method="post">
-						<p>เริ่มต้น</p>
+						<p style="font-weight: bold;">เริ่มต้น</p>
 						<input name="startdate" class="form-control" type="date">
-                        <p>สิ้นสุด</p>
+                        <p style="font-weight: bold;">สิ้นสุด</p>
 						<input name="enddate" class="form-control" type="date">
-			    		<p>สถาบัน</p>
+			    		<p style="font-weight: bold;">สถาบัน</p>
 			    		<input name="place" class="form-control" type="text" placeholder="สถาบัน">			    		
-			    		<p>หลักสูตร</p>
+			    		<p style="font-weight: bold;">หลักสูตร</p>
 			    		<input name="corse" class="form-control" type="text" placeholder="หลักสูตร">			    		
 					<div class="clearfix"> </div><br>
 					<div class="row">

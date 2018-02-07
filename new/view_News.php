@@ -1,4 +1,6 @@
 <? 
+session_save_path("../session/");
+session_start();
 include "../connect.php";
 include "../fchangdate.php";
 date_default_timezone_set("Asia/Bangkok");
@@ -98,7 +100,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <td><img src="myfile/<?php echo $objResult["pic"];?>" width='50%';></td>
         <td><?php echo $objResult["date"];?></td>
         <td><a href="News_manag.php?news_id=<?php echo $objResult["news_id"];?>">แก้ไข</a></td>
-        <td><a href="view_News.php?action=del&news_id=<?echo $objResult["news_id"]; ?>" onclick="return confirm('ลบข่าว')">ลบ</a></td>
+        <td><a href="view_News.php?action=del&news_id=<?echo $objResult["news_id"]; ?>" onClick="return confirm('ลบข่าว')">ลบ</a></td>
         
       </tr>
       <?php

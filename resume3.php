@@ -132,7 +132,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<form name="myform" action="resume3.php?action=update" method="post">
 					<input name="info2_id" type="hidden" value="<? echo $info2_id;?>">
 					<div class="form-group">
-						<label for="status">ประเภทงานที่สนใจ * </label>
+						<label for="status" style="font-weight: bold;">ประเภทงานที่สนใจ <font color="red">*</font></label>
 						<br>
 						<select class="form-control" name="type_id">
 							<option value="">ทุกประเภท</option>
@@ -145,19 +145,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div>
 
 				<div class="form-group">
-						<label for="Position">ตำแหน่งที่สนใจ *</label>
-						<input id="position" name="position1" class="form-control" type="text" value="<? echo $result4['position1'];?>">
+						<label for="Position" style="font-weight: bold;">ตำแหน่งที่สนใจ <font color="red">*</font></label>
+						<input id="position" name="position1" class="form-control" type="text" value="<? echo $result4['position1'];?>" required>
 						<span id="error_Position" class="text-danger"></span>
 					</div>
 
 				<div class="form-group">
-							<label for="Salary">เงินเดือนที่ต้องการ</label>
+							<label for="Salary" style="font-weight: bold;">เงินเดือนที่ต้องการ</label>
                             <input id="salary" name="salary" class="form-control" type="text" value="<? echo $result4['salary'];?>">                          
                             </div> 
                             
                             
                <div class="form-group">
-							<label for="Salary">สถานที่</label>
+							<label for="Salary" style="font-weight: bold;">สถานที่</label>
                             <select class="form-control" name="province">
                                         <option value="">-- ทุกจังหวัด --</option>
                                         <? while($result_pro2 = mysql_fetch_array($query_pro2)){?>
@@ -178,7 +178,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<form name="myform" action="resume3.php?action=insert" method="post">
 					
 					<div class="form-group">
-						<label for="status">ประเภทงานที่สนใจ * </label>
+						<label for="status" style="font-weight: bold;">ประเภทงานที่สนใจ <font color="red">*</font></label>
 						<br>
 						<select class="form-control" name="type_id">
 							<option value="">ทุกประเภท</option>
@@ -191,19 +191,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div>
 
 				<div class="form-group">
-						<label for="Position">ตำแหน่งที่สนใจ *</label>
-						<input id="position" name="position1" class="form-control" type="text" placeholder="ตำแหน่งที่สนใจ">
+						<label for="Position" style="font-weight: bold;">ตำแหน่งที่สนใจ <font color="red">*</font></label>
+						<input id="position" name="position1" class="form-control" type="text" placeholder="ตำแหน่งที่สนใจ" required>
 						<span id="error_Position" class="text-danger"></span>
 					</div>
 
 				<div class="form-group">
-							<label for="Salary">เงินเดือนที่ต้องการ</label>
+							<label for="Salary" style="font-weight: bold;">เงินเดือนที่ต้องการ</label>
                             <input id="salary" name="salary" class="form-control" type="text" placeholder="เงินเดือนที่ต้องการ">                          
                             </div> 
                             
                             
                <div class="form-group">
-							<label for="Salary">สถานที่</label>
+							<label for="Salary" style="font-weight: bold;">สถานที่</label>
                             <select class="form-control" name="province">
                                         <option value="">-- ทุกจังหวัด --</option>
                                         <? while($result_pro2 = mysql_fetch_array($query_pro2)){?>

@@ -33,7 +33,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </head>
 <body>
 <? include "topmenu.php";?>
-<!--div class="banner_1">
+<div class="banner_1">
 	<div class="container">
 		<div id="search_wrapper1">
 		   <div id="search_form" class="clearfix">
@@ -41,14 +41,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
            </div>
 		</div>
    </div> 
-</div-->	
+</div>	
 <div class="container">
     <div class="single">  
 	 <div class="col-md-12 single_right">
 	      <div class="search_wrapper1">
 	       <div class="clearfix">
 	       	
-			<!--<h1>ลงประกาศงาน</h1>-->
+			<!-- <h1>รายการที่สมัคร</h1> -->
 
 		<div id="myTabContent" class="tab-content">
 		  <div role="tabpanel" class="tab-pane fade in active" id="home" aria-labelledby="home-tab" >
@@ -96,11 +96,15 @@ while($result_list2= mysql_fetch_array($query_list2)){
 </div>
 			 </div>
 		  </div>
+
 	  </div>
+
      </div>
+
     </div>
+    <div class="clearfix"></div>
    </div>
-  <div class="clearfix"> </div>
+  
  </div>
 
 <? include "footer.php";?>

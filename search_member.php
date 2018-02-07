@@ -122,6 +122,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
               <td><label class="btn2 btn-2 btn2-1b"><input type="submit" value="ค้นหา"></label></td>
             </tr>
             </table>
+            </br></br>
              
 			 
 			 
@@ -171,18 +172,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		?>  
 		    <div class="tab_grid">
 			    <div class="jobs-item with-thumb">
-				    <div class="thumb"><a href="jobs_single.html"><img src="images/jobgo1.jpg" class="img-responsive" alt=""/></a></div>
+				    <div class="thumb"><a href="member_detail.php?m_id=<? echo $member_id;?>"><img src="images/jobgo1.jpg" class="img-responsive" alt=""/></a></div>
 				    <div class="jobs_right">
-						<div class="date">30 <span>Jul</span></div>
-						<div class="date_desc"><h6 class="title"><a href="job_detail.php?post_id=<? echo $result_list['position_id'];?>"><? echo $result_list['position1'];?></a></h6>
+						<div class="date"><?$dt = new DateTime($result_list['datetime']); echo date_format($dt, 'd');?><span><?echo date_format($dt, 'M');?></span></div>
+						<div class="date_desc"><h6 class="title"><a href="member_detail.php?m_id=<? echo $member_id;?>"><? echo $result_list['position1'];?></a></h6>
 						  <span class="meta"><? echo $result_pro2['PROVINCE_NAME'];?></span>
 						</div>
 						<div class="clearfix"> </div>
-                        <ul class="top-btns">
-							<li><a href="#" class="fa fa-plus toggle"></a></li>
-							<li><a href="#" class="fa fa-star"></a></li>
-							<li><a href="#" class="fa fa-link"></a></li>
-						</ul>
                         <p>เงินเดือนที่ต้องการ : <? echo $result_list['salary'];?></p>
 						<p>เพศ : <? if($result_user['sex']=='1'){ echo "ชาย";}else{ echo "หญิง";}?></p>
 						<p class="description"><a href="member_detail.php?m_id=<? echo $member_id;?>" class="read-more">รายละเอียดผู้สมัคร>></a></p>
@@ -388,7 +384,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	   </div>
   <div class="clearfix"> </div>
  </div>
-</div>
+</div></br></br>
 <? include "footer.php";?>
 </body>
 </html>	

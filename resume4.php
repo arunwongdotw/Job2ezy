@@ -128,22 +128,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<input name="info3_id" type="hidden" value="<? echo $info3_id;?>">
 					<div class="form-group">
 						
-						<p>ระดับการศึกษา</p>
+						<p style="font-weight: bold;">ระดับการศึกษา</p>
 						<select name="level" class="form-control">
 							<option selected>-- ระดับการศึกษา --</option>
 							<? while($result1 = mysql_fetch_array($query1)){?>
                                 <option value="<? echo $result1['edu_id'];?>" <? if($result1['edu_id']==$result4['level']){ echo "selected";}?>><? echo $result1['edu_name'];?></option>
                             <? }?>
 						</select>
-                        <p>สถาบัน</p>
+                        <p style="font-weight: bold;">สถาบัน</p>
 						<input name="school" class="form-control" type="text" value="<? echo $result4['school'];?>">					
-						<p>สาขาวิชา</p>
+						<p style="font-weight: bold;">สาขาวิชา</p>
 						<input name="branch" class="form-control" type="text" value="<? echo $result4['branch'];?>">
-						<p>วุฒิการศึกษา</p>
+						<p style="font-weight: bold;">วุฒิการศึกษา</p>
 						<input name="edu" class="form-control" type="text" value="<? echo $result4['edu'];?>">						
-						<p>เกรดเฉลี่ย (GPA.)</p>
+						<p style="font-weight: bold;">เกรดเฉลี่ย (GPA.)</p>
 						<input name="grade" class="form-control" type="text" value="<? echo $result4['grade'];?>">
-                        <p>ปีที่จบ</p>
+                        <p style="font-weight: bold;">ปีที่จบ</p>
 						<input name="year" class="form-control" type="month" value="<? echo $result4['year'];?>">
 					</div>				   
 					<div class="clearfix"> </div>
@@ -158,22 +158,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
            
 					<div class="form-group">
 						
-						<p>ระดับการศึกษา</p>
+						<p style="font-weight: bold;">ระดับการศึกษา</p>
 						<select name="level" class="form-control">
 							<option selected>-- ระดับการศึกษา --</option>
 							<? while($result1 = mysql_fetch_array($query1)){?>
                                 <option value="<? echo $result1['edu_id'];?>"><? echo $result1['edu_name'];?></option>
                             <? }?>
 						</select>
-                        <p>สถาบัน</p>
+                        <p style="font-weight: bold;">สถาบัน</p>
 						<input name="school" class="form-control" type="text" placeholder="สถาบัน">					
-						<p>สาขาวิชา</p>
+						<p style="font-weight: bold;">สาขาวิชา</p>
 						<input name="branch" class="form-control" type="text" placeholder="สาขาวิชา">
-						<p>วุฒิการศึกษา</p>
+						<p style="font-weight: bold;">วุฒิการศึกษา</p>
 						<input name="edu" class="form-control" type="text" placeholder="วุฒิการศึกษา">						
-						<p>เกรดเฉลี่ย (GPA.)</p>
+						<p style="font-weight: bold;">เกรดเฉลี่ย (GPA.)</p>
 						<input name="grade" class="form-control" type="text" placeholder="เกรดเฉลี่ย (GPA.)">
-                        <p>ปีที่จบ</p>
+                        <p style="font-weight: bold;">ปีที่จบ</p>
 						<input name="year" class="form-control" type="month">
 					</div>				   
 					<div class="clearfix"> </div>

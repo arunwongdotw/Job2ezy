@@ -19,7 +19,7 @@ if($_REQUEST['action']=='insert'){
 		//$_SESSION['b_username']="";
 		?><script>window.location="search_jobs.php";</script><?
 		}else{ 
-			?><script>alert("Username หรือ Password !!"); window.location="login.php";</script><?
+			?><script>alert("Username หรือ Password ผิด!!"); window.location="login.php";</script><?
 			}
 	}
 //-------------------- LOGOUT -------------------
@@ -175,10 +175,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	   	  	<div class="jb-accordion-title">ผู้สมัครงาน</div>
 	   	  	<div class="panel-body">
 	   	  	<ul class="list_1">
-	   	  		<li><a href="#"><span><i class="fa fa-user"></i></span> เข้าสู่ระบบผู้สมัครงาน</a></li>
+	   	  		<li><a><span><i class="fa fa-user"></i></span> เข้าสู่ระบบผู้สมัครงาน</a></li>
 	   	  		<li><a href="#"><span><i class="fa fa-key"></i></span> ด้วยชื่อผู้ใช้งาน และรหัสผ่าน</a></li>
-	   	  		<li><a href="#"><span><i class="fa fa-pencil-square-o"></i></span> สามารถลงทะเบียนเพื่อเข้าสู่ระบบได้</a></li>
-	   	  								
+	   	  		<li><a href="#"><span><i class="fa fa-pencil-square-o"></i></span> สามารถลงทะเบียนเพื่อเข้าสู่ระบบได้</a></li>	
 	   	  	</ul>
 	   	  </div></div>
 	   	  </div>

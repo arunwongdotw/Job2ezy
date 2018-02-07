@@ -36,7 +36,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div id="search_wrapper1">
           <div id="search_form" class="clearfix">
                        
-             
+             <strong><font  face="AngsanaUPC"><p style="font-size: 5em">วาไรตี้</p></font></strong>
             
            </div>
         </div>

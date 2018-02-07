@@ -87,7 +87,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </div>
         </div>
         <?
-			$strTo = "rujira5790@gmail.com";
+			$strTo = "giggognet@gmail.com";
 			$strSubject = $_POST["message"];
 			$strHeader = "Content-type: text/html; charset=windows-874\r\n"; // or UTF-8 //
 			$strHeader .= "From: ".$_POST["name"]."<".$_POST["email"].">\r\nReply-To: ".$_POST["email"]."";
@@ -111,11 +111,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	   	  	<div class="panel-body">
 	   	  	<ul class="list_1">
 	   	  		<li><h4 ><span><i class="fa fa-map-marker"></i></span>  Address</h4></li>
-	   	  		<li><p style="font-size: 16px;"><span>22/14 หมู่ที่ 3 ถ.เอเชีย ต.นาเคียน อ.เมือง จ.นครศรีธรรมราช 80000</span></p></li>
+	   	  		<li><p style="font-size: 16px;"><span>42 ถ.พัฒนาการทุ่งปรัง ต.ในเมือง อ.เมือง จ.นครศรีธรรมราช 80000</span></p></li>
 	   	  		<li><h4><span><i class="fa fa-phone"></i></span>  Call Us</h4></li>
-	   	  		<li><p style="font-size: 16px;"><span>075-419210, 081-893-1717</span></p></li>
+	   	  		<li><p style="font-size: 16px;"><span>0xx-xxxxx, 0xx-xxx-xxxx</span></p></li>
 	   	  		<li><h4><span><i class="fa fa-envelope"></i></span>  Email</h4></li>
-	   	  		<li><a style="font-size: 16px" href="mailto:rujira5790@gmail.com"><span>rujira5790@gmail.com</span></a></li>						
+	   	  		<li><a style="font-size: 16px" href="mailto:xxxx@gmail.com"><span>xxxxxxxx@gmail.com</span></a></li>						
 	   	  	</ul>
 	   	  </div></div>
 	   	  </div>

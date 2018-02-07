@@ -38,11 +38,8 @@ session_start();
 	$fax = $_POST['fax'];
 	$website = $_POST['website'];
 	$security = $_POST['security'];
-	
-	if($_FILES["filUpload"]["name"] != "")
-	{
-	move_uploaded_file($_FILES["filUpload"]["tmp_name"],"myfile/".$_FILES["filUpload"]["name"]);
-	}
+		
+	//move_uploaded_file($_FILES["filUpload"]["tmp_name"],"myfile/".$_FILES["filUpload"]["name"]);
 	$sql2 = "update business set
 			type_b_id='$type',
 			admin='$admin',
@@ -56,12 +53,26 @@ session_start();
 			email ='$email',
 			fax ='$fax',
 			website ='$website',
-			security ='$security',
-			logo = '".$_FILES["filUpload"]["name"]."' ,
+			security ='$security',			
 			phone ='$phone' where b_username = '$b_username'";
 	$query2 = mysql_query($sql2);
 	
-	
+	if($_FILES["filUpload"]["name"] != "")
+	{
+		if(move_uploaded_file($_FILES["filUpload"]["tmp_name"],"myfile/".$_FILES["filUpload"]["name"]))
+		{
+
+			//*** Delete Old File ***//			
+			//@unlink("myfile/banner/".$_POST["hdnOldFile"]);
+			
+			//*** Update New File ***//
+			$strSQL = "UPDATE business set logo = '".$_FILES["filUpload"]["name"]."' WHERE b_username = '$b_username' ";
+			$objQuery = mysql_query($strSQL);		
+
+			//echo "Copy/Upload Complete<br>";
+			
+		}
+	}
 	if($query2)
 		{
 			?>
@@ -136,32 +147,38 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<form action="business.php?action=update" method="POST" enctype="multipart/form-data">				
 					<div class="form-group">
                     	
-                        โลโก้บริษัท : 
-                          <img src="myfile/<? echo $result_list['logo'];?>" width="200"><span><input type="file" name="filUpload"></span>
+                        <label style="font-weight: bold;">โลโก้บริษัท : </label></br>
+                          <img src="myfile/<? echo $result_list['logo'];?>" width="200"></br><span></br><input type="file" name="filUpload"></span>
                         <hr>
-                    	<label for="myName">ประเภทธุรกิจ *</label>
+                    	<label for="myName" style="font-weight: bold;">ประเภทธุรกิจ <font color="red">*</font></label>
                         <select name="type_id" class="form-control">
                                         <option value="">-- ประเภท --</option>
                                         <? while($result_typeb = mysql_fetch_array($query_typeb)){?>
                                         <option value="<? echo $result_typeb['type_b_id'];?>" <? if($result_typeb['type_b_id']==$result_list['type_b_id']){ echo 'selected';}?>><? echo $result_typeb['type_b_name'];?></option>
                                         <? }?>
                                         </select>
-                    	<label for="status">ชื่อผู้ติดต่อ *</label>
-						<input type="text" name="admin" id="admin" class="form-control" placeholder="ชื่อผู้ติดต่อ" value="<? echo $result_list['admin'];?>">
-                    	<label for="nationality">ชื่อบริษัท *</label>
-						<input type="text" name="name" id="name" class="form-control" placeholder="ชื่อบริษัท" value="<? echo $result_list['name'];?>">
-                    	<label for="status">รายละเอียดของบริษัท *</label>
-						<textarea name="detail" id="detail" cols="45" rows="3" class="form-control" placeholder="รายละเอียดของบริษัท"><? echo $result_list['detail'];?></textarea>
-                    	<label for="nationality">ที่อยู่ *</label>
-						<input type="text" name="address" id="address" class="form-control" placeholder="ที่อยู่" value="<? echo $result_list['address'];?>">
-                    	<label for="status">จังหวัด *</label>
+                        <br>               
+                    	<label for="status" style="font-weight: bold;">ชื่อผู้ติดต่อ <font color="red">*</font></label>
+						<input type="text" name="admin" id="admin" class="form-control" placeholder="ชื่อผู้ติดต่อ" value="<? echo $result_list['admin'];?>" required>
+                        <br>
+                    	<label for="nationality" style="font-weight: bold;">ชื่อบริษัท <font color="red">*</font></label>
+						<input type="text" name="name" id="name" class="form-control" placeholder="ชื่อบริษัท" value="<? echo $result_list['name'];?>" required>
+                        <br>
+                    	<label for="status" style="font-weight: bold;">รายละเอียดของบริษัท <font color="red">*</font></label>
+						<textarea name="detail" id="detail" cols="45" rows="3" class="form-control" placeholder="รายละเอียดของบริษัท" style="resize: vertical;" required><? echo $result_list['detail'];?></textarea>
+                        <br>
+                    	<label for="nationality" style="font-weight: bold;">ที่อยู่ <font color="red">*</font></label>
+						<input type="text" name="address" id="address" class="form-control" placeholder="ที่อยู่" value="<? echo $result_list['address'];?>" required>
+                        <br>
+                    	<label for="status" style="font-weight: bold;">จังหวัด <font color="red">*</font></label>
 						<select name='province' id='province' onChange="data_show(this.value,'amphur');" class="form-control">
                                         <option value="">-- จังหวัด --</option>
                                         <? while($result_pro = mysql_fetch_array($query_pro)){?>
                                         <option value="<? echo $result_pro['PROVINCE_ID'];?>" <? if($result_pro['PROVINCE_ID']==$result_list['province_id']){ echo 'selected';}?>><? echo $result_pro['PROVINCE_NAME'];?></option>
                                         <? }?>
                         </select>
-                    	<label for="nationality">อำเภอ *</label>
+                        <br>
+                    	<label for="nationality" style="font-weight: bold;">อำเภอ <font color="red">*</font></label>
 						<select name='amphur' id='amphur' onChange="data_show(this.value,'district');" class="form-control">   
                         <option value="">-- อำเภอ--</option>
                         <?	
@@ -170,7 +187,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<option value="<?=$arr_2['AMPHUR_ID']?>" <? if($arr_2['AMPHUR_ID']==$result_list['amphur_id']){ echo 'selected';}?>><?=$arr_2['AMPHUR_NAME']?></option>
 						<? }}?>               
                 		</select>
-						<label for="status">ตำบล *</label>
+                        <br>
+						<label for="status" style="font-weight: bold;">ตำบล <font color="red">*</font></label>
                         
 						<select name='district' id='district'  onchange="data_show(this.value,'code_p');" class="form-control">
                         <option value="">-- ตำบล--</option>
@@ -180,18 +198,24 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<option value="<?=$result_district['DISTRICT_ID']?>" <? if($result_district['DISTRICT_ID']==$result_list['district_id']){ echo 'selected';}?>><?=$result_district['DISTRICT_NAME']?></option>
 						<? }}?> 
                         </select>
-                        <label for="nationality">รหัสไปรษณีย์ *</label>
-						<input type="text" name="code" class="form-control" placeholder="รหัสไปรษณีย์" value="<? echo $result_list['code'];?>">
-                        <label for="nationality">โทรศัพท์ *</label>
-                        <input type="text" name="phone" id="phone" class="form-control" placeholder="โทรศัพท์" value="<? echo $result_list['phone'];?>">
-                        <label for="nationality">อีเมล์ *</label>
-                        <input type="text" name="email" id="email" class="form-control" placeholder="อีเมล์" value="<? echo $result_list['email'];?>">
-                        <label for="nationality">Fax *</label>
-                        <input type="text" name="fax" id="fax" class="form-control" placeholder="Fax" value="<? echo $result_list['fax'];?>">
-                        <label for="nationality">Website *</label>
-                        <input type="text" name="website" id="website" class="form-control" placeholder="Website" value="<? echo $result_list['website'];?>">
-                        <label for="nationality">สวัสดิการ *</label>
-                        <input type="text" name="security" id="security" class="form-control" placeholder="สวัสดิการ" value="<? echo $result_list['security'];?>">
+                        <br>
+                        <label for="nationality" style="font-weight: bold;">รหัสไปรษณีย์ <font color="red">*</font></label>
+						<input type="text" name="code" class="form-control" placeholder="รหัสไปรษณีย์" value="<? echo $result_list['code'];?>" required>
+                        <br>
+                        <label for="nationality" style="font-weight: bold;">โทรศัพท์ <font color="red">*</font></label>
+                        <input type="text" name="phone" id="phone" class="form-control" placeholder="โทรศัพท์" value="<? echo $result_list['phone'];?>" required>
+                        <br>
+                        <label for="nationality" style="font-weight: bold;">อีเมล์ <font color="red">*</font></label>
+                        <input type="text" name="email" id="email" class="form-control" placeholder="อีเมล์" value="<? echo $result_list['email'];?>" required>
+                        <br>
+                        <label for="nationality" style="font-weight: bold;">Fax <font color="red">*</font></label>
+                        <input type="text" name="fax" id="fax" class="form-control" placeholder="Fax" value="<? echo $result_list['fax'];?>" required>
+                         <br>
+                        <label for="nationality" style="font-weight: bold;">Website <font color="red">*</font></label>
+                        <input type="text" name="website" id="website" class="form-control" placeholder="Website" value="<? echo $result_list['website'];?>" required>
+                        <br>
+                        <label for="nationality" style="font-weight: bold;">สวัสดิการ <font color="red">*</font></label>
+                        <input type="text" name="security" id="security" class="form-control" placeholder="สวัสดิการ" value="<? echo $result_list['security'];?>" required>
 						<span id="error_nationality" class="text-danger"></span>
 					</div>
 			    			<div class="form-group">
@@ -223,3 +247,33 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <? include "footer.php";?>
 </body>
 </html>	
+<script language="javascript">
+function uzXmlHttp(){
+    var xmlhttp = false;
+    try{
+        xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
+    }catch(e){
+        try{
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }catch(e){
+            xmlhttp = false;
+        }
+    }
+ 
+    if(!xmlhttp && document.createElement){
+        xmlhttp = new XMLHttpRequest();
+    }
+    return xmlhttp;
+}
+function data_show(select_id,result33){
+	var url = 'data_ampur.php?select_id='+select_id+'&result33='+result33;
+	//alert(url);
+	
+    xmlhttp = uzXmlHttp();
+    xmlhttp.open("GET", url, false);
+	xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=utf-8"); // set Header
+    xmlhttp.send(null);
+	document.getElementById(result33).innerHTML =  xmlhttp.responseText;
+}
+//window.onLoad=data_show(5,'amphur'); 
+</script>

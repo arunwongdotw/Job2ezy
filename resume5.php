@@ -122,19 +122,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<form action="resume5.php?action=update" method="post">
 					<input name="info4_id" type="hidden" value="<? echo $info4_id;?>">
 					  					
-						<p>เริ่มต้น</p>
+						<p style="font-weight: bold;">เริ่มต้น</p>
 						<input name="startdate" class="form-control" type="date" value="<? echo $result4['startdate'];?>">
-                        <p>สิ้นสุด</p>
+                        <p style="font-weight: bold;">สิ้นสุด</p>
 						<input name="enddate" class="form-control" type="date" value="<? echo $result4['enddate'];?>">
-			    		<p>บริษัท</p>
+			    		<p style="font-weight: bold;">บริษัท</p>
 			    		<input name="namebusiness" class="form-control" type="text" value="<? echo $result4['namebusiness'];?>">
-			    		<p>ที่อยู่บริษัท</p>
+			    		<p style="font-weight: bold;">ที่อยู่บริษัท</p>
 			    		<textarea name="contact" class="form-control" type="text"> <? echo $result4['contact'];?></textarea>
-			    		<p>ตำแหน่ง</p>
+			    		<p style="font-weight: bold;">ตำแหน่ง</p>
 			    		<input name="position" class="form-control" type="text" value="<? echo $result4['position'];?>">
-			    		<p>เงินเดือน (บาท)</p>
+			    		<p style="font-weight: bold;">เงินเดือน (บาท)</p>
 			    		<input name="salary4" class="form-control" type="text" value="<? echo $result4['salary4'];?>">
-			    		<p>ลักษณะงานที่ทำ</p>
+			    		<p style="font-weight: bold;">ลักษณะงานที่ทำ</p>
 			    		<textarea name="description" class="form-control" type="text"><? echo $result4['description'];?></textarea>
 					<div class="clearfix"> </div><br>
 					<button id="submit" type="submit" value="submit" class="btn btn-primary center">อัพเดทข้อมูล</button>
@@ -145,19 +145,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<!------------------------- insert ------------------------------>
             <? if($count<3 and $_REQUEST['action']!='edit'){?>
 			<form name="myform" action="resume5.php?action=insert" method="post">
-						<p>เริ่มต้น</p>
+						<p style="font-weight: bold;">เริ่มต้น</p>
 						<input name="startdate" class="form-control" type="date">
-                        <p>สิ้นสุด</p>
+                        <p style="font-weight: bold;">สิ้นสุด</p>
 						<input name="enddate" class="form-control" type="date">
-			    		<p>บริษัท</p>
+			    		<p style="font-weight: bold;">บริษัท</p>
 			    		<input name="namebusiness" class="form-control" type="text" placeholder="ชื่อบริษัท">
-			    		<p>ที่อยู่บริษัท</p>
+			    		<p style="font-weight: bold;">ที่อยู่บริษัท</p>
 			    		<textarea name="contact" class="form-control" type="text" placeholder="ที่อยู่บริษัท" style="resize: vertical;"></textarea>
-			    		<p>ตำแหน่ง</p>
+			    		<p style="font-weight: bold;">ตำแหน่ง</p>
 			    		<input name="position" class="form-control" type="text" placeholder="ตำแหน่ง">
-			    		<p>เงินเดือน (บาท)</p>
+			    		<p style="font-weight: bold;">เงินเดือน (บาท)</p>
 			    		<input name="salary4" class="form-control" type="text" placeholder="เงินเดือน">
-			    		<p>ลักษณะงานที่ทำ</p>
+			    		<p style="font-weight: bold;">ลักษณะงานที่ทำ</p>
 			    		<textarea name="description" class="form-control" type="text" placeholder="ลักษณะงานที่ทำ" style="resize: vertical;"></textarea>
 					<div class="clearfix"> </div><br>
 					<div class="row">

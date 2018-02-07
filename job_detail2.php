@@ -28,7 +28,8 @@ $query1 = mysql_query($sql1);
 $result1 = mysql_fetch_array($query1);
 
 if($result1['sex']=='1'){ "ชาย";}else{ "หญิง";}
-
+echo $result1['name'];
+echo $result1['email'];
 $sql_pro = "select * from province";
 $query_pro = mysql_query($sql_pro);
 
@@ -94,8 +95,8 @@ if($_REQUEST['action']=='insert'){
     $query_job = mysql_query($sql_job); 
     $count_job = mysql_num_rows($query_job);
 
-//$strTo = "sssss.modaw@gmail.com";
-$strTo = $result_list3['email'];
+$strTo = "sssss.modaw@gmail.com";
+//$strTo = $result_list3['email'];
 //$strTo = "".$result_list3['email']."";
 
 $strSubject = " สมัครงานตำแหน่ง:  ".$result_list2['position']." ";
@@ -347,7 +348,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 			</div>
 			<div class="panel-body">
-<form name="myform" action="job_detail.php?action=insert&post_id=<?echo $post_id?>" method="post">
+<form name="myform" action="job_detail2.php?action=insert&post_id=<?echo $post_id?>" method="post">
                 <input type="hidden" name="position_id" value="<? echo $result_list2['position_id'];?>">
 					<div class="form-group">
 						<p for="myName" style="font-weight: bolder;font-size: 18px">ตำแหน่งงาน :  <span style="font-size: 16px; font-weight: normal;"><? echo $result_list2['position'];?></span></p>

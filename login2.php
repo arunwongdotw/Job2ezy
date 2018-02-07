@@ -20,7 +20,7 @@ if($_REQUEST['action']=='insert'){
 		
 		?><? if($package_ids!=0){?><script>window.location="search_member.php";</script><? }else{ ?><script>window.location="package.php";</script><? }?><?
 		}else{ 
-			?><script>alert("Username หรือ Password !!"); window.location="login2.php";</script><?
+			?><script>alert("Username หรือ Password ผิด!!"); window.location="login2.php";</script><?
 			}
 	}
 //-------------------- LOGOUT -------------------

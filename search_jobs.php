@@ -6,6 +6,12 @@ $username = $_SESSION['m_username'];
 	include "connect.php";
 	include "fchangdate.php";
 
+//------------------- ข้อความวิ่ง --------------
+	$sql2 = "select * from maquee where maquee_id='1'";
+ 	$query2 = mysql_query($sql2);
+	$result2 = mysql_fetch_array($query2);
+//------------------------------------------
+
 	$sql_pro2 = "select * from province order by PROVINCE_NAME";
 	$query_pro2 = mysql_query($sql_pro2);
 		
@@ -19,7 +25,7 @@ $username = $_SESSION['m_username'];
 	$sql_list2 = "select * from post";
  	$query_list2 = mysql_query($sql_list2);
 
-	$rows=2;
+	$rows=15;
 	$page=$_GET["page"];
 	if($page==""){
 		$page=1;
@@ -89,16 +95,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <? include "topmenu.php";?>
 <div class="banner_1">
 	<div class="container">
-     <p style="font-size:14px">
-     <a href="search_jobs.php?GEO_ID=1">หางานภาคกลาง</a> ||
-     <a href="search_jobs.php?GEO_ID=2">หางานตะวันตก</a> || 
-     <a href="search_jobs.php?GEO_ID=3">หางานตะวันออก</a> || 
-     <a href="search_jobs.php?GEO_ID=4">หางานภาคเหนือ</a> || 
-     <a href="search_jobs.php?GEO_ID=5">หางานอีสาน</a> || 
-     <a href="search_jobs.php?GEO_ID=6">หางานภาคใต้</a>
+    </br>
+    <p style="font-size:14px">
+        <a href="search_jobs.php?GEO_ID=1" style="color: white;"><input type="submit" class="btn btn-primary btn-xs" value="หางานภาคกลาง"></input></a>
+        <a href="search_jobs.php?GEO_ID=2" style="color: white;"><input type="submit" class="btn btn-primary btn-xs" value="หางานภาคตะวันตก"></input></a>
+        <a href="search_jobs.php?GEO_ID=3" style="color: white;"><input type="submit" class="btn btn-primary btn-xs" value="หางานตะวันออก"></input></a>
+        <a href="search_jobs.php?GEO_ID=4" style="color: white;"><input type="submit" class="btn btn-primary btn-xs" value="หางานภาคเหนือ"></input></a>
+        <a href="search_jobs.php?GEO_ID=5" style="color: white;"><input type="submit" class="btn btn-primary btn-xs" value="หางานอีสาน"></input></a>
+        <a href="search_jobs.php?GEO_ID=6" style="color: white;"><input type="submit" class="btn btn-primary btn-xs" value="หางานภาคใต้"></input></a>
      
-     
-     </p>
+    </p>
      
 
 		<div id="search_wrapper1">
@@ -127,10 +133,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </td>
             </tr>
             <tr>
-              <td><input type="text" class="text" name="keyword" placeholder="ตำแหน่งงาน"></td>
+              <td><input type="text" class="text" name="keyword" placeholder="ตำแหน่งงานที่เกี่ยวข้อง"></td>
               <td><label class="btn2 btn-2 btn2-1b"><input type="submit" value="ค้นหางาน"></label></td>
             </tr>
-            </table>
+            </table></br></br>
              
 			 
 			 
@@ -145,7 +151,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </div>	
 
 <div class="col-md-12">
-  <marquee><font color="red" size="8em" face="AngsanaUPC">ฝากประวัติหางานกับเราวันนี้ รับของที่ระลึกฟรี !! ด่วนจำนวนจำกัด **** ข้อมูลเพิ่มเติม ติดต่อฝ่ายบริการลูกค้า</font></marquee>  
+  <marquee><font color="red" size="8em" face="AngsanaUPC"><? echo $result2['maquee_name'];?></font></marquee>  
 </div>
 
 
@@ -173,19 +179,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		?> 
 		    <div class="tab_grid">
 			    <div class="jobs-item with-thumb">
-				    <div class="thumb"><a href="jobs_single.html">
+				    <div class="thumb"><a href="company_job.php?busi_id=<? echo $result_b['b_id'];?>">
                     <? if($result_b['logo']==''){?> <img src="myfile/logo.png" class="img-responsive" alt=""/><? }else{?><img src="myfile/<? echo $result_b['logo'];?>" class="img-responsive" alt=""/><? }?></a></div>
 				    <div class="jobs_right">
-						<div class="date">30 <span>Jul</span></div>
+						<div class="date"><?$date = new DateTime($result_list['day']); echo date_format($date, 'd');?><span><?echo date_format($date, 'M');?></span></div>
 						<div class="date_desc"><h6 class="title"><a href="job_detail.php?post_id=<? echo $result_list['position_id'];?>"><? echo $result_list['position'];?></a></h6>
 						  <span class="meta">บริษัท : <a href="company_job.php?busi_id=<? echo $result_b['b_id'];?>"><? echo $result_b['name'];?></a> | วันที่ : <? echo dmy($result_list['day']);?> | <? echo $result_list['PROVINCE_NAME'];?></span>
 						</div>
 						<div class="clearfix"> </div>
-                        <ul class="top-btns">
-							<li><a href="#" class="fa fa-plus toggle"></a></li>
-							<li><a href="#" class="fa fa-star"></a></li>
-							<li><a href="#" class="fa fa-link"></a></li>
-						</ul>
 						<p class="description"><? echo $result_list['feature'];?>. <a href="job_detail.php?post_id=<? echo $result_list['position_id'];?>" class="read-more">รายละเอียดงาน>></a></p>
                     </div>
                     
@@ -390,7 +391,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	   </div>
   <div class="clearfix"> </div>
  </div>
-</div>
+</div></br></br>
 <? include "footer.php";?>
 </body>
 </html>	

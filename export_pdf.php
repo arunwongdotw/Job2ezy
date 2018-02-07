@@ -50,8 +50,32 @@ $result5 = mysql_fetch_array($query5);
 $sql6 = "select * from info6 where username = '$username'";
 $query6 = mysql_query($sql6);
 $result6 = mysql_fetch_array($query6);
+$th = $result6['th'];
+$en = $result6['en'];
 
- 
+$sql62 = "select * from level_pasa where level_id = '$th'";
+$query62 = mysql_query($sql62);
+$result62 = mysql_fetch_array($query62);
+
+$sql63 = "select * from level_pasa where level_id = '$en'";
+$query63 = mysql_query($sql63);
+$result63 = mysql_fetch_array($query63);
+
+$birthday = dmy($result1['birthday']);
+$startdate = dmy($result4['startdate']);
+$enddate = dmy($result4['enddate']);
+$year = mount_thai($result3['year']);
+$salary4 = number_format($result4['salary4'])." บาท";
+$salary = number_format($result2['salary'])." บาท";
+
+if($result1['seller']=='1'){  $seller = "ผ่านเกณฑ์";}else{  $seller= "ยังไม่ผ่านเกณฑ์";}
+if($result6['d1']=='on'){  $d1= "checked";}
+if($result6['d2']=='on'){  $d2= "checked";}
+if($result6['d3']=='on'){  $d3= "checked";}
+if($result6['c1']=='on'){  $c1= "checked";}
+if($result6['c2']=='on'){  $c2= "checked";}
+if($result6['c3']=='on'){  $c3= "checked";}
+
 ?>
 
 
@@ -85,14 +109,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <td width="25%"><p>เพศ</p></td>
     <td width="25%"><p><? if($result1['sex']=='1'){ echo "ชาย";}else{ echo "หญิง";}?></p></td>
     <td width="25%"><p>วันเดือนปีเกิด</p></td>
-    <td width="25%"><p><? echo dmy($result1['birthday']);?></p></td>
+    <td width="25%"><p><? echo $birthday;?></p></td>
   </tr>
   <tr>
     <td><p>สถานภาพสมรส</p></td>
     <td><p><? echo $result1['status'];?></p></td>
     <td><p>สถานภาพทางทหาร</p></td>
     <td><p>
-      <? if($result1['seller']=='1'){ echo "ผ่านเกณฑ์";}else{ echo "ยังไม่ผ่านเกณฑ์";}?>
+      <? echo $seller;?>
       </p></td>
   </tr>
   <tr>
@@ -145,7 +169,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                            </tr>
                            <tr>
                              <td><p>เงินเดือน :</p></td>
-                             <td><p><? echo $result2['salary'];?></p></td>
+                             <td><p><? echo $salary;?></p></td>
                            </tr>
                            <tr>
                              <td><p>สถานที่:</p></td>
@@ -180,7 +204,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                            </tr>
                            <tr>
                              <td><p>ปีที่สำเร็จ:</p></td>
-                             <td><p><? echo $result3['year'];?></p></td>
+                             <td><p><? echo $year;?></p></td>
                            </tr>
                            <tr>
                              <td><p>เกรดฉลี่ย:</p></td>
@@ -194,8 +218,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                            <tr>
                              <td width="50%"><p>ระยะเวลา :</p></td>
                              <td width="50%">
-                             <p><? echo dmy($result4['startdate']);?> ถึง 
-                             <? echo dmy($result4['enddate']);?></p></td>
+                             <p><? echo $startdate;?> ถึง 
+                             <? echo $enddate;?></p></td>
                            </tr>
                            <tr>
                              <td><p>ชื่อบริษัท :</td>
@@ -207,7 +231,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                            </tr>
                            <tr>
                              <td><p>เงินเดือน:</p></td>
-                             <td><p><? echo $result4['salary4'];?></p></td>
+                             <td><p><? echo $salary4;?></p></td>
                            </tr>
                            <tr>
                              <td><p>ตำแหน่ง:</p></td>
@@ -227,12 +251,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		 	         
 	          <h4>ทักษะและความสามารถ</h4>
 	         <table width="80%" border="0">                          
+                           
                            <tr>
-                             <td width="50%"><p>ภาษา :</p></td>
-                             <td width="50%" colspan="2">
-                             <p>ไทย <? echo $result6['th'];?></p>
-                             <p>อังกฤษ <? echo $result6['en'];?></p>  
-                             </td>
+                             <td><p>ภาษา :</p></td>
+                             <td><p>ไทย <span><? echo $result62['level_name'];?></span></p></td>
+                             <td><p>อังกฤษ <span><? echo $result63['level_name'];?></span></p></td>
                            </tr>
                            <tr>
                              <td><p>พิมพ์ดีด :</p></td>
@@ -243,9 +266,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                              <td><p>ความสามารถในการขับขี่:</p></td>
                              <td colspan="2">
                              <p>
-                             <input type="checkbox" id="d1" name="d1" <? if($result6['d1']=='on'){ echo "checked";}?> disabled> รถจักรยานยนต์
-                             <input type="checkbox" id="d2" name="d2" <? if($result6['d2']=='on'){ echo "checked";}?> disabled> รถยนต์
-                             <input type="checkbox" id="d3" name="d3" <? if($result6['d3']=='on'){ echo "checked";}?> disabled> รถบรรทุก
+                             <input type="checkbox" id="d1" name="d1" <? echo $d1;?> disabled> รถจักรยานยนต์
+                             <input type="checkbox" id="d2" name="d2" <? echo $d2;?> disabled> รถยนต์
+                             <input type="checkbox" id="d3" name="d3" <? echo $d3;?> disabled> รถบรรทุก
                               </p>
                              </td>
                            </tr>
@@ -253,9 +276,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                              <td><p>มีพาหนะส่วนตัว:</p></td>
                              <td colspan="2">
                              <p>
-                             <input type="checkbox" id="c1" name="c1" <? if($result6['c1']=='on'){ echo "checked";}?> disabled> รถจักรยานยนต์
-                             <input type="checkbox" id="c2" name="c2" <? if($result6['c2']=='on'){ echo "checked";}?> disabled> รถยนต์
-                             <input type="checkbox" id="c3" name="c3" <? if($result6['c3']=='on'){ echo "checked";}?> disabled> รถบรรทุก
+                             <input type="checkbox" id="c1" name="c1" <? echo $c1;?> disabled> รถจักรยานยนต์
+                             <input type="checkbox" id="c2" name="c2" <? echo $c2;?> disabled> รถยนต์
+                             <input type="checkbox" id="c3" name="c3" <? echo $c3;?> disabled> รถบรรทุก
                              </p></td>
                            </tr>
                            <tr>

@@ -59,18 +59,22 @@
 	                    	<?if($maxsearch == 99){?>
 	                    		<li><a href="search_member.php">หาผู้สมัครงาน</a></li>
 					            <li><a href="mymember.php">ใบสมัครที่เลือกไว้</a></li>
+					            <li><a href="myreceive.php">ใบสมัครที่ได้รับ</a></li>
 	                    	<?}else{?>
 	                    		<?if($countsearch < $maxsearch){?>
 	                    			<li><a href="search_member.php">หาผู้สมัครงาน</a></li>
 					            	<li><a href="mymember.php">ใบสมัครที่เลือกไว้</a></li>
+					            	<li><a href="myreceive.php">ใบสมัครที่ได้รับ</a></li>
 	                    		<?}else{?>
 	                    			<li><a href="#" onClick="alert('จำนวนการค้นหาผู้สมัครงานของคุณหมดแล้ว กรุณาซื้อแพ็กเกจ!')">หาผู้สมัครงาน</a></li>
 	                    			<li><a href="mymember.php">ใบสมัครที่เลือกไว้</a></li>
+	                    			<li><a href="myreceive.php">ใบสมัครที่ได้รับ</a></li>
 	                    		<?}?>
 	                    	<?}?>   
 				        <?}else{?>
 				        	<li><a href="#" onClick="alert('แพ็กเพจของคุณหมดอายุการใช้งาน กรุณาซื้อแพ็กเกจ!')">หาผู้สมัครงาน</a></li>
 			            	<li><a href="mymember.php">ใบสมัครที่เลือกไว้</a></li>
+			            	<li><a href="myreceive.php">ใบสมัครที่ได้รับ</a></li>
 			            	<?
 			            		$sqlupdatestatus = "update business_package set status = '0' where b_id = '$bid'";
 			            		$queryupdatestatus = mysql_query($sqlupdatestatus);

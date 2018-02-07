@@ -1,4 +1,6 @@
 <? 
+session_save_path("../session/");
+session_start();
 include "../connect.php";
 include "../fchangdate.php";
 date_default_timezone_set("Asia/Bangkok");

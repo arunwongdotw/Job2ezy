@@ -68,7 +68,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="form-group col-md-12">
                 <label class="col-md-3 control-lable" for="firstName">Username</label>
                 <div class="col-md-9">
-                    <input type="text"    placeholder="Username" name="username"  class="form-control input-sm"/>
+                    <input type="text" minlength="6" maxlength="12" placeholder="Username 6-12 characters" name="username"  class="form-control input-sm" required>
                 </div>
             </div>
          </div>
@@ -76,7 +76,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="form-group col-md-12">
                 <label class="col-md-3 control-lable" for="lastName">Password</label>
                 <div class="col-md-9">
-                    <input type="password"   class="form-control input-sm" placeholder="Password " name="password1" required>
+                    <input type="password" minlength="6" maxlength="12" class="form-control input-sm" placeholder="Password 6-12 characters" name="password1" required>
                 </div>
             </div>
         </div>
@@ -84,7 +84,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="form-group col-md-12">
                 <label class="col-md-3 control-lable" for="lastName">Confirm Password </label>
                 <div class="col-md-9">
-                    <input type="password"  class="form-control input-sm"  placeholder="Confirm Password " name="password2" required >
+                    <input type="password" class="form-control input-sm"  placeholder="Confirm Password" name="password2" required>
                 </div>
             </div>
         </div>

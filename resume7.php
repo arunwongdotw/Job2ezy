@@ -143,8 +143,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <input name="info6_id" type="hidden" value="<? echo $info6_id0;?>">
 						<div class="row">
 							<div class="col-xs-6 col-sm-6 col-md-6">
-								<label for="dob" style="color:Green ">ความสามารถทางภาษา</label>
-								 <p style="color: #0000FF">ภาษาไทย</p>
+								<label for="dob" style="color:Green; font-weight: bold; ">ความสามารถทางภาษา</label>
+								 <p style="color: #0000FF; font-weight: bold;">ภาษาไทย</p>
 								<div class="form-group">
 							
 							<select name="th" class="form-control">
@@ -157,7 +157,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								</div>
 			    				<div class="col-xs-6 col-sm-6 col-md-6">
 			    					<div class="form-group"><br>
-			    						<p style="color: #0000FF">ภาษาอังกฤษ</p>
+			    						<p style="color: #0000FF; font-weight: bold;">ภาษาอังกฤษ</p>
 			    			<select name="en" class="form-control">
 							<option selected>-- ระดับ --</option>
 							<? while($result_level2 = mysql_fetch_array($query_level2)){?>
@@ -170,16 +170,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			    		
 			    		<div class="row">
 							<div class="col-xs-6 col-sm-6 col-md-6">
-								<label for="dob" style="color:Green ">พิมพ์ดีด</label>
+								<label for="dob" style="color:Green; font-weight: bold;">พิมพ์ดีด</label>
 								
-								 <p style="color: #0000FF">ภาษาอังกฤษ</p>
+								 <p style="color: #0000FF; font-weight: bold;">ภาษาอังกฤษ</p>
 								<div class="form-group">
 									 <input name="keyth" class="form-control" type="number" placeholder="คำ/นาที" value="<? echo $result_value3['keyth'];?>"><br>
 							</div>
 								</div>
 			    				<div class="col-xs-6 col-sm-6 col-md-6">
 			    					<div class="form-group"><br>
-			    						<p style="color: #0000FF">ภาษาไทย</p>
+			    						<p style="color: #0000FF; font-weight: bold;">ภาษาไทย</p>
 								<div class="form-group">
 									 <input name="keyen" class="form-control" type="number" placeholder="คำ/นาที"  value="<? echo $result_value3['keyen'];?>"><br>
 								</div>
@@ -189,7 +189,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			    		</div>
 			    		<div class="row">
 							<div class="col-xs-6 col-sm-6 col-md-6">
-								<label for="dob" style="color:Green ">ความสามารถในการขับขี่</label>
+								<label for="dob" style="color:Green; font-weight: bold;">ความสามารถในการขับขี่</label>
 								
 								<div>
                              <label class="radio-inline">
@@ -200,7 +200,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								</div>
 			    				<div class="col-xs-6 col-sm-6 col-md-6">
 			    					<div>
-			    						<label for="dob" style="color:Green ">ใบอนุญาติขับขี่</label><br>
+			    						<label for="dob" style="color:Green; font-weight: bold;">ใบอนุญาติขับขี่</label><br>
 			    			 <label class="radio-inline">
 							 <input type="checkbox" id="c1" name="c1" <? if($result_value3['c1']=='on'){ echo "checked";}?>> รถจักรยานยนต์<br>
                              <input type="checkbox" id="c2" name="c2" <? if($result_value3['c2']=='on'){ echo "checked";}?>> รถยนต์<br>
@@ -208,9 +208,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			    					</div>
 			    				</div>
 			    		</div>
+			    	</br>
 		
-		<label for="dob" style="color: green">ความสามารถพิเศษอื่น ๆ</label>
-						<textarea name="special1" class="form-control" type="text"><? echo $result_value3['special1'];?></textarea>
+		<label for="dob" style="color: green; font-weight: bold;">ความสามารถพิเศษอื่น ๆ</label>
+						<textarea name="special1" class="form-control" type="text" style="resize: vertical;"><? echo $result_value3['special1'];?></textarea>
 
 					<div class="clearfix"> </div><br>
 			  <div class="row">
@@ -226,15 +227,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <? if($count3>0 and $_REQUEST['action']!='edit'){?>
 <div class="row">
 							<div class="col-xs-6 col-sm-6 col-md-6">
-								<label for="dob" style="color:Green ">ความสามารถทางภาษา</label>
-								 <p style="color: #0000FF">ภาษาไทย</p>
+								<label for="dob" style="color:Green; font-weight: bold;">ความสามารถทางภาษา</label>
+								 <p style="color: #0000FF; font-weight: bold;">ภาษาไทย</p>
 								<div class="form-group">
 							<? echo $level_th;?>
 							</div>
 								</div>
 			    				<div class="col-xs-6 col-sm-6 col-md-6">
 			    					<div class="form-group"><br>
-			    						<p style="color: #0000FF">ภาษาอังกฤษ</p>
+			    						<p style="color: #0000FF; font-weight: bold;">ภาษาอังกฤษ</p>
 			    			<? echo $level_en;?>
 			    					</div>
 			    				</div>
@@ -242,16 +243,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			    		
 			    		<div class="row">
 							<div class="col-xs-6 col-sm-6 col-md-6">
-								<label for="dob" style="color:Green ">พิมพ์ดีด</label>
+								<label for="dob" style="color:Green; font-weight: bold;">พิมพ์ดีด</label>
 								
-								 <p style="color: #0000FF">ภาษาอังกฤษ</p>
+								 <p style="color: #0000FF; font-weight: bold;">ภาษาอังกฤษ</p>
 								<div class="form-group">
 									<? echo $result_value3['keyth'];?> คำ/นาที"><br>
 							</div>
 								</div>
 			    				<div class="col-xs-6 col-sm-6 col-md-6">
 			    					<div class="form-group"><br>
-			    						<p style="color: #0000FF">ภาษาไทย</p>
+			    						<p style="color: #0000FF; font-weight: bold;">ภาษาไทย</p>
 								<div class="form-group">
 									 <? echo $result_value3['keyen'];?> คำ/นาที"><br>
 								</div>
@@ -261,7 +262,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			    		</div>
 			    		<div class="row">
 							<div class="col-xs-6 col-sm-6 col-md-6">
-								<label for="dob" style="color:Green ">ความสามารถในการขับขี่</label>
+								<label for="dob" style="color:Green; font-weight: bold;">ความสามารถในการขับขี่</label>
 								
 								<div class="form-group">
                              <label class="radio-inline">
@@ -272,7 +273,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								</div>
 			    				<div class="col-xs-6 col-sm-6 col-md-6">
 			    					<div class="form-group">
-			    						<label for="dob" style="color:Green ">ความสามารถในการขับขี่</label><br>
+			    						<label for="dob" style="color:Green; font-weight: bold;">ความสามารถในการขับขี่</label><br>
 			    			 <label class="radio-inline">
 							 <input type="checkbox" id="c1" name="c1" <? if($result_value3['c1']=='on'){ echo "checked";}?> disabled> รถจักรยานยนต์<br>
                              <input type="checkbox" id="c2" name="c2" <? if($result_value3['c2']=='on'){ echo "checked";}?> disabled> รถยนต์<br>
@@ -280,7 +281,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			    					</div>
 			    				</div>
 			    		</div>
-                        <label for="dob" style="color: green">ความสามารถพิเศษอื่น ๆ</label><br>
+                        <label for="dob" style="color: green; font-weight: bold;">ความสามารถพิเศษอื่น ๆ</label><br>
 						<? echo $result_value3['special1'];?><br><br>
 <div class="form-actions floatRight">
         <a href="resume7.php?action=edit&info6_id0=<? echo $result_value3['info6_id'];?>"> <button type="button" class="btn btn-primary btn-sm">แก้ไข</button></a>        

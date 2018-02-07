@@ -89,7 +89,7 @@
 	    <link href='//fonts.googleapis.com/css?family=Roboto:100,200,300,400,500,600,700,800,900' rel='stylesheet' type='text/css'>
 	</head>
 	<body>
-		<?include "topmenu.php";?>
+		<?include "admin/admin_menu.php";?>
 		<div class="container">
 			<div class="grid_1"><h3>เปลี่ยนสถานะสมาชิก</h3></div>
 			<table class="table table-striped" style="width: 700px; margin-right: auto; margin-left: auto;">

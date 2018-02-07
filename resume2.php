@@ -127,12 +127,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="panel-body">
 				<form name="myform" action="resume2.php?action=insert" method="post">
 					<div class="form-group">
-						<label for="address">ที่อยู่ *</label>
-						<input id="address" name="address" class="form-control" type="text" value="<? echo $result3['address'];?>">
+						<label for="address" style="font-weight: bold;">ที่อยู่ <font color="red">*</font></label>
+						<input id="address" name="address" class="form-control" type="text" value="<? echo $result3['address'];?>" required>
 						<span id="error_address" class="text-danger"></span>
 					</div>
 					<div class="form-group">
-						<label for="status">จังหวัด *</label>
+						<label for="status" style="font-weight: bold;">จังหวัด <font color="red">*</font></label>
 						<select class="form-control" name="province" onChange="data_show(this.value,'amphur');">
                                         <option value="">-- ทุกจังหวัด --</option>
                                         <? while($result_pro2 = mysql_fetch_array($query_pro2)){?>
@@ -142,7 +142,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<span id="error_province" class="text-danger"></span>
 					</div>
 					<div class="form-group">
-						<label for="amphoe">อำเภอ *</label>
+						<label for="amphoe" style="font-weight: bold;">อำเภอ <font color="red">*</font></label>
 						<select  class="form-control" name='amphur' id='amphur' onChange="data_show(this.value,'district');">
                         <option value="">--- อำเภอ ---</option>
                         <?	
@@ -154,7 +154,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<span id="error_amphoe" class="text-danger"></span>
 					</div>
 					<div class="form-group">
-						<label for="district">ตำบล *</label>
+						<label for="district" style="font-weight: bold;">ตำบล <font color="red">*</font></label>
 						<select  class="form-control" name='district' id='district'  onChange="data_show(this.value,'postcode1');">
                         <option value="">--- ตำบล ---</option>  
                         <?	
@@ -168,18 +168,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div>
 					
 					<div class="form-group">
-						<label for="postcode">รหัสไปรษณีย์ *</label>
-						<input class="form-control" type="text" name="postcode1" id="postcode1" placeholder="รหัสไปรษณีย์" value="<? echo $result3['code'];?>">
+						<label for="postcode" style="font-weight: bold;">รหัสไปรษณีย์ <font color="red">*</font></label>
+						<input class="form-control" type="text" name="postcode1" id="postcode1" placeholder="รหัสไปรษณีย์" value="<? echo $result3['code'];?>" required>
 						<span id="error_postcode" class="text-danger"></span>
 					</div>
 					<div class="form-group">
-						<label for="mail">E-mail   *</label>
-						<input id="email" name="email" class="form-control" type="email" data-validation="email" value="<? echo $result3['email'];?>">
+						<label for="mail" style="font-weight: bold;">E-mail <font color="red">*</font></label>
+						<input id="email" name="email" class="form-control" type="email" data-validation="email" value="<? echo $result3['email'];?>" required>
 						<span id="error_mail" class="text-danger"></span>
 					</div>
 					<div class="form-group">
-						<label for="tel">โทรศัพท์  *</label>
-						<input id="phone" name="phone"  class="form-control" type="number" min="1"   value="<? echo $result3['phone'];?>">
+						<label for="tel" style="font-weight: bold;">โทรศัพท์ <font color="red">*</font></label>
+						<input id="phone" name="phone"  class="form-control" type="number" min="1"   value="<? echo $result3['phone'];?>" required>
 						<span id="error_tel" class="text-danger"></span>
 					</div>
 					<div class="row">

@@ -85,7 +85,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <div class="textbox-wrap">
                             <div class="input-group">
                                 <span class="input-group-addon "><i class="fa fa-key"></i></span>
-                                <input type="password"  placeholder="รหัสผ่านใหม่" name="password2" class="form-control" required>                                
+                                <input type="password" minlength="6" maxlength="12" placeholder="รหัสผ่านใหม่ 6-12 ตัวอักษร" name="password2" class="form-control" required>                                
                             </div>
                         </div>
                         <div class="textbox-wrap">

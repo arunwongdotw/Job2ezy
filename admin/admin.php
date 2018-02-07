@@ -1,7 +1,7 @@
 <? 
-/*session_save_path("./session/");
+session_save_path("../session/");
 session_start();
-	$username = $_SESSION['b_username'];*/
+	//$username = $_SESSION['b_username'];*/
 	include "../connect.php";
 	include "../fchangdate.php";
 
@@ -136,8 +136,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <? }?>
 
 <?	} ?>
-</table>      
-        <!--<h6 >ข่าว.....</h6>-->
+</table>      <!--<h6 >ข่าว.....</h6>-->
     </div>
   </div>
 
@@ -154,11 +153,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     </div>
   </div>
   -->
-  <div id="4" class="w3-container w3-border city" style="display:none">
-    <div class="about-in">
-        <table></table>
-    </div>
-  </div>
+
   
    <div class="clearfix"></div>
 </div></div></div><br>

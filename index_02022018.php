@@ -307,7 +307,6 @@ session_start();
 </div><div class="clearfix"> </div></div>
 
 <div class="container">
-<div align="center"><a href="http://probioticandherbal.com/" target="_blank"><img src="images/probiotic.gif" width="80%"></a></div>
     <div class="single">  
 	   <div class="col-md-9 single_right">
 	      <div class="but_list">
@@ -430,7 +429,7 @@ session_start();
 	 <div class="single">  
 	   <div class="col-md-2">
 	   	  <div class="col_3">
-	   	  	<!--<h3>ธุรกิจที่เกี่ยวข้อง</h3>-->
+	   	  	<h3 style="border-radius: 3px; text-align: center;">ธุรกิจที่เกี่ยวข้อง</h3>
 	   	  	<ul class="list_1">
 	   	  			
 

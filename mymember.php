@@ -6,10 +6,16 @@ $b_username = $_SESSION['b_username'];
 include "connect.php";
 include "fchangdate.php";
 
-	$sql_list2 = "select * from my_member where b_username = '$b_username'";
- 	$query_list2 = mysql_query($sql_list2);
-		
+$sql_list2 = "select * from my_member where b_username = '$b_username'";
+$query_list2 = mysql_query($sql_list2);
 
+if(isset($_POST['delmymember'])){
+	$sqldelete = "delete from my_member where m_username = '".$_POST['musername']."'";
+	$querydelete = mysql_query($sqldelete);
+
+	$sql_list2 = "select * from my_member where b_username = '$b_username'";
+	$query_list2 = mysql_query($sql_list2);
+}
 
 ?>
 <!DOCTYPE HTML>
@@ -60,10 +66,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="jb-accordion-title">รายการใบสมัคร</div>
 			<div class="panel-body">
 				<table width="100%" border="0">
-<tr>
-    <th>ชื่อใบสมัคร</th>
-   
-  </tr>
 <? 
 $i=0;
 while($result_list2= mysql_fetch_array($query_list2)){
@@ -82,8 +84,13 @@ while($result_list2= mysql_fetch_array($query_list2)){
 	?>
     
   <tr>
-    <td><a href="member_detail.php?m_id=<? echo $member_id;?>"><? echo $i.". ".$result3['name'];?></a></td>
-    
+    <td><a href="member_detail.php?m_id=<? echo $member_id;?>"><? echo $i.". ".$result3['name'];?></td>
+    <td>
+    	<form action="" method="POST">
+    		<input type="hidden" name="musername" value="<?echo $m_username;?>">
+    		<input type="submit" name="delmymember" class="btn btn-primary btn-xs btn-danger" value="ลบใบสมัครที่เลือก" style="font-size: 12px" onclick="return confirm('คุณแน่ใจที่จะลบใบสมัครนี้หรือไม่?')">
+    	</form>
+    </td>
   </tr>
 <? }?>
 </table>

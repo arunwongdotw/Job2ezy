@@ -7,17 +7,25 @@ $b_username = $_SESSION['b_username'];
 include "connect.php";
 include "fchangdate.php";
 
-	if($_REQUEST['action2']=='delete')
-	{
-		$position_id = $_REQUEST['post_id'];
-		$sql_delete = "delete from post where position_id = '$position_id'";
- 		$query_delete = mysql_query($sql_delete); 
-	}
-	
+	// if($_REQUEST['action2']=='delete')
+	// {
+	// 	$position_id = $_REQUEST['post_id'];
+	// 	$sql_delete = "delete from post where position_id = '$position_id'";
+ // 		$query_delete = mysql_query($sql_delete); 
+	// }
+
+	if(isset($_POST['delpost'])){
+ 		$sqldelete = "delete from post where position_id = '".$_POST['positionid']."'";
+ 		$querydelete = mysql_query($sqldelete);
+
+ 		$sql_list = "select * from post where b_username = '$b_username'";
+ 		$query_list = mysql_query($sql_list);
+ 	}
+
 	$sql_list = "select * from post where b_username = '$b_username'";
  	$query_list = mysql_query($sql_list);
-
 ?>
+
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -64,15 +72,23 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="jb-accordion-wrapper">
 			<div class="jb-accordion-title">รายการประกาศงาน</div>
 			<div class="panel-body">								
+                      <table width="100%" border="0">
                            <? 
 						   $i=0;
 						   while($result_list = mysql_fetch_array($query_list)){
 						   $i++;
 						   ?>
-                         	<a href="post_detail.php?post_id=<? echo $result_list['position_id'];?>"><? echo $i.". ".$result_list['position'];?></a>
-                            <p><? echo "ลงประกาศเมื่อ ".dmy($result_list['day']);?> </p>                           
-                            <hr>
-                          <? }?>                      
+						   <tr>
+                         	<td><a href="post_detail.php?post_id=<? echo $result_list['position_id'];?>"><? echo $i.". ".$result_list['position'];?></a><p><? echo "ลงประกาศเมื่อ ".dmy($result_list['day']);?></p></td>
+                         	<td>
+    							<form action="" method="POST">
+    								<input type="hidden" name="positionid" value="<?echo $result_list['position_id'];?>">
+    								<input type="submit" name="delpost" class="btn btn-primary btn-xs btn-danger" value="ลบประกาศหางาน" style="font-size: 12px" onclick="return confirm('คุณแน่ใจที่จะลบประกาศนี้หรือไม่?')">
+    							</form>
+    						</td>
+                        </tr>
+                          <? }?>   
+                          </table>                   
 
 			</div>
 		</div>
